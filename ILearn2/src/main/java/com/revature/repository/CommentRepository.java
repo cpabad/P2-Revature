@@ -13,12 +13,13 @@ import com.revature.model.User;
 @Repository(value = "commentRepository")
 public interface CommentRepository extends JpaRepository<Comment, Integer> {
 	
-	Comment findByCommentId(int id);
+	Comment findByCommentid(int id);
 	List<Comment> findByLesson(Lesson lesson);
 	List<Comment> findByAuthorAndLesson(User author, Lesson lesson);
-	List<Comment> findByComment_date(Timestamp date);
+//	List<Comment> findByComment_date(Timestamp date);
 	List<Comment> findByAuthor(User author);
-	Comment findByAuthorAndComment_dateAndLesson(User author, Timestamp date, Lesson lesson);
+//	Comment findByAuthorAndComment_dateAndLesson(User author, Timestamp date, Lesson lesson);
 	<S extends Comment> S save(Comment comment);
+	boolean existsByCommentid(int id);
 
 }
