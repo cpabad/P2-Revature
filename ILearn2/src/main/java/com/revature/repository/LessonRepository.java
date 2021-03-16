@@ -2,6 +2,9 @@ package com.revature.repository;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import com.revature.model.Course;
 import com.revature.model.Lesson;
 
@@ -11,12 +14,12 @@ import com.revature.model.Lesson;
  *
  */
 
-public interface LessonRepository {
+@Repository(value = "lessonRepository")
+public interface LessonRepository extends JpaRepository<Lesson, Integer>{
 
-	public void createLesson(Lesson lesson);
-	public void updateLesson(Lesson lesson);
-	public void deleteLesson(Lesson lesson);
-	public List<Lesson> getLessonByCourseId(int courseid);
-	public List<Lesson> getLessonByLessonId(int lessonid);
-	public List<Lesson> getLessonByTitle(String title);
+	Lesson save(Lesson lesson);
+	void delete(Lesson lesson);
+	Lesson findByLessonid(Integer id);
+	List<Lesson> findAll();
+	
 }

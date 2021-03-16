@@ -19,11 +19,11 @@ public class Comment {
 	@Column
 	private int commentid;
 	
-	@JoinColumn(name = "lessonId")
+	@JoinColumn(name = "lessonid")
 	@ManyToOne
 	private Lesson lesson;
 	
-	@JoinColumn(name = "authorId")
+	@JoinColumn(name = "authorid")
 	@ManyToOne
 	private User author;
 	
