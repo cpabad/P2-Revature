@@ -19,7 +19,7 @@ public class Lesson {
 	@Column
 	private String title;
 	
-	@JoinColumn(name = "courseId")
+	@JoinColumn(name = "courseid")
 	@ManyToOne
 	private Course course;
 	
