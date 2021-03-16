@@ -70,6 +70,22 @@ public class CommentController {
 		this.commentService.updateComment(comment);
 	}
 	
+	@PostMapping(path = "/like")
+	public void likeComment(@RequestParam int commentId) {
+		Comment retrievedComment = this.commentService.findById(commentId);
+		int retrievedLikeCounter = retrievedComment.getLike_counter();
+		retrievedComment.setLike_counter(retrievedLikeCounter + 1);
+		this.commentService.updateComment(retrievedComment);
+	}
+	
+	@PostMapping(path = "/dislike")
+	public void dislikeComment(@RequestParam int commentId) {
+		Comment retrievedComment = this.commentService.findById(commentId);
+		int retrievedDislikeCounter = retrievedComment.getDislike_counter();
+		retrievedComment.setLike_counter(retrievedDislikeCounter + 1);
+		this.commentService.updateComment(retrievedComment);
+	}
+	
 	@PostMapping(path = "/delete", consumes = {MediaType.APPLICATION_JSON_VALUE})
 	public void deleteComment(@RequestBody Comment comment) {
 		this.commentService.deleteComment(comment);
