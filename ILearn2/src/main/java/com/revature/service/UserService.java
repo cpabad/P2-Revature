@@ -48,6 +48,10 @@ public class UserService {
 		return this.userRepository.findByUserid(id);
 	}
 	
+	public User getUserByEmail(String email) {
+		return this.userRepository.findByEmail(email);
+	}
+	
 	public List<User> getAllUsers(){
 		
 		return this.userRepository.findAll();
@@ -65,6 +69,16 @@ public class UserService {
 			course.setNumber_enrolled(course.getNumber_enrolled()+1);
 			updateUser(user);
 			this.courseSevice.updateCourse(course);
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public boolean login(String email, String password){
+		
+		User user = this.getUserByEmail(email);
+		if(user != null && user.getUser_password().equals(password)) {
 			return true;
 		}else {
 			return false;
