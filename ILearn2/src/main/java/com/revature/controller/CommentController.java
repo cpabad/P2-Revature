@@ -1,6 +1,5 @@
 package com.revature.controller;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,20 +44,10 @@ public class CommentController {
 		return this.commentService.findByAuthorAndLesson(author, lesson);
 	}
 	
-//	@GetMapping(path = "/view-comment-by-date", produces = {MediaType.APPLICATION_JSON_VALUE})
-//	public List<Comment> findByDate(@RequestParam Timestamp date) {
-//		return this.commentService.findByComment_date(date);
-//	}
-//	
 	@GetMapping(path = "/view-comment-by-author", produces = {MediaType.APPLICATION_JSON_VALUE}, consumes = {MediaType.APPLICATION_JSON_VALUE})
 	public List<Comment> findByAuthor(@RequestBody User author) {
 		return this.commentService.findByAuthor(author);
 	}
-	
-//	@GetMapping(path = "/view-comment-by-author-date-lesson", produces = {MediaType.APPLICATION_JSON_VALUE})
-//	public Comment findByAuthorDateLesson(@RequestParam User author, @RequestParam Timestamp date, @RequestParam Lesson lesson) {
-//		return this.commentService.findByAuthorAndComment_dateAndLesson(author, date, lesson);
-//	}
 	
 	@PostMapping(path = "/new", consumes = {MediaType.APPLICATION_JSON_VALUE})
 	public void createComment(@RequestBody Comment comment) {
