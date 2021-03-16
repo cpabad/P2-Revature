@@ -82,7 +82,7 @@ public class CommentController {
 	public void dislikeComment(@RequestParam int commentId) {
 		Comment retrievedComment = this.commentService.findById(commentId);
 		int retrievedDislikeCounter = retrievedComment.getDislike_counter();
-		retrievedComment.setLike_counter(retrievedDislikeCounter + 1);
+		retrievedComment.setDislike_counter(retrievedDislikeCounter + 1);
 		this.commentService.updateComment(retrievedComment);
 	}
 	
