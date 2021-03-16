@@ -35,13 +35,13 @@ public class CommentController {
 		return this.commentService.findById(id);
 	}
 	
-	@GetMapping(path = "/view-comment-by-lesson", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public List<Comment> findByLesson(@RequestParam Lesson lesson) {
+	@GetMapping(path = "/view-comment-by-lesson", produces = {MediaType.APPLICATION_JSON_VALUE}, consumes = {MediaType.APPLICATION_JSON_VALUE})
+	public List<Comment> findByLesson(@RequestBody Lesson lesson) {
 		return this.commentService.findByLesson(lesson);
 	}
 	
-	@GetMapping(path = "/view-comment-by-author-lesson", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public List<Comment> findByAuthorAndLesson(@RequestParam User author, @RequestParam Lesson lesson) {
+	@GetMapping(path = "/view-comment-by-author-lesson", produces = {MediaType.APPLICATION_JSON_VALUE}, consumes = {MediaType.APPLICATION_JSON_VALUE})
+	public List<Comment> findByAuthorAndLesson(@RequestBody User author, @RequestBody Lesson lesson) {
 		return this.commentService.findByAuthorAndLesson(author, lesson);
 	}
 	
@@ -50,8 +50,8 @@ public class CommentController {
 //		return this.commentService.findByComment_date(date);
 //	}
 //	
-	@GetMapping(path = "/view-comment-by-author", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public List<Comment> findByAuthor(@RequestParam User author) {
+	@GetMapping(path = "/view-comment-by-author", produces = {MediaType.APPLICATION_JSON_VALUE}, consumes = {MediaType.APPLICATION_JSON_VALUE})
+	public List<Comment> findByAuthor(@RequestBody User author) {
 		return this.commentService.findByAuthor(author);
 	}
 	
