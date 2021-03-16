@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.revature.model.Course;
 import com.revature.model.User;
 import com.revature.repository.UserRepository;
 
@@ -21,6 +22,9 @@ public class UserService {
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private CourseService courseSevice;
 	
 	public void addUser(User user) {
 		
@@ -39,7 +43,7 @@ public class UserService {
 		
 	}
 	
-	public User getUserById(Integer id) {
+	public User getUserById(int id) {
 		
 		return this.userRepository.findByUserid(id);
 	}
@@ -48,6 +52,23 @@ public class UserService {
 		
 		return this.userRepository.findAll();
 		
+	}
+	
+	public boolean enrollCourse(int userid, int courseid) {
+		
+		User user = getUserById(userid);
+		Course course = this.courseSevice.getCourseById(courseid);
+		
+		if (user != null && course !=null) {
+			
+			user.getEnrolled_courses().add(course);
+			course.setNumber_enrolled(course.getNumber_enrolled()+1);
+			updateUser(user);
+			this.courseSevice.updateCourse(course);
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 }

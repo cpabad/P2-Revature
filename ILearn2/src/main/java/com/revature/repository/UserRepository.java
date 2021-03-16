@@ -22,7 +22,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	
 	User save(User user);
 	void delete(User user);
-	User findByUserid(Integer id);
+	User findByUserid(int id);
 	List<User> findAll();
 
 }
