@@ -64,7 +64,6 @@ public class UserService {
 		Course course = this.courseSevice.getCourseById(courseid);
 		
 		if (user != null && course !=null) {
-			
 			user.getEnrolled_courses().add(course);
 			course.setNumber_enrolled(course.getNumber_enrolled()+1);
 			updateUser(user);
