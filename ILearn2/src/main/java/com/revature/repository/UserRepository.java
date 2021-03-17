@@ -23,6 +23,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	User save(User user);
 	void delete(User user);
 	User findByUserid(int id);
+	User findByEmail(String email);
 	List<User> findAll();
 
 }
