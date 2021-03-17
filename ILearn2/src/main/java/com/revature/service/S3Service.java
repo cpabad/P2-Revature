@@ -63,7 +63,7 @@ public class S3Service {
 	}
 	
 	public void uploadFileTos3bucket(String fileName, File file) {
-		s3client.putObject(new PutObjectRequest("p1jan25bucket", fileName, file).withCannedAcl(CannedAccessControlList.PublicRead));
+		s3client.putObject(new PutObjectRequest(this.bucketName, fileName, file).withCannedAcl(CannedAccessControlList.PublicRead));
 	}
 	
 	public String uploadFile(MultipartFile multipartFile) {
@@ -71,7 +71,7 @@ public class S3Service {
 		try {
 			File file = convertMultiPartToFile(multipartFile);
 			String fileName = generateFileName(multipartFile);
-			fileUrl = "https://p1jan25bucket.s3.us-east-2.amazonaws.com/" + fileName;
+			fileUrl = "https://" + this.bucketName + ".s3.us-east-2.amazonaws.com/" + fileName;
 			uploadFileTos3bucket(fileName, file);
 			file.delete();
 		} catch(Exception e) {
