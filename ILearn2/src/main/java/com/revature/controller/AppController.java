@@ -50,7 +50,11 @@ public class AppController {
 	
 	@PostMapping(path = "/addUser", consumes = {MediaType.APPLICATION_JSON_VALUE})
 	public void addUser(@RequestBody User user) {
-		this.userService.addUser(user);;
+		
+		if(!(user.getEmail().equals("") || user.getUser_password().equals("") || user.getFirst_name().equals("")||user.getLast_name().equals(""))) {
+			this.userService.addUser(user);
+		}
+		
 	}
 	
 	@PostMapping(path = "/updateUser",consumes = {MediaType.APPLICATION_JSON_VALUE})
