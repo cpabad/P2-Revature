@@ -33,26 +33,17 @@ public class CommentService {
 		return this.commentRepository.findByAuthorAndLesson(author, lesson);
 	}
 	
-//	public List<Comment> findByComment_date(Timestamp date) {
-//		return this.commentRepository.findByComment_date(date);
-//	}
-	
 	public List<Comment> findByAuthor(User author) {
 		return this.commentRepository.findByAuthor(author);
 	}
 	
-//	public Comment findByAuthorAndComment_dateAndLesson(User author, Timestamp date, Lesson lesson) {
-//		return this.commentRepository.findByAuthorAndComment_dateAndLesson(author, date, lesson);
-//	}
-	
+
 	public void createComment(Comment comment) {
 		this.commentRepository.save(comment);
 	}
 	
 	public void updateComment(Comment comment) {
-		if(this.commentRepository.existsByCommentid(comment.getCommentid()) == true) {
-			this.commentRepository.save(comment);
-		}
+		this.commentRepository.save(comment);
 	}
 	
 	public void deleteComment(Comment comment) {
