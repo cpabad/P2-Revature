@@ -28,7 +28,17 @@ public class AppController {
 	@Autowired
 	private CourseService courseService;
 	
-	@GetMapping(path = "/all")
+	
+	@PostMapping(path = "/login")
+	public String login(@RequestParam String email, @RequestParam String password){
+		if(this.userService.login(email, password)) {
+			
+			return "Successufully login! ";
+		}
+		return "Incorrect email or password!";
+	}
+	
+	@GetMapping(path = "/allUsers")
 	public List<User> getAllUsers(){
 		return this.userService.getAllUsers();
 	}

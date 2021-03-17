@@ -1,0 +1,51 @@
+<h2>Welcome to iLearn!</h2>
+<div class = "about">
+    <p>    iLearn is the social media platform for any aspiring intellectual.
+    In iLearn, unique courses and discussion pages will be created for any and all 
+    that want to teach others. Users can search, follow, 
+    and of course learn from their favorite content creators.
+    </p>
+</div>
+
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form action="#">
+			<h1>Sign up</h1>
+			<input type="text" placeholder="First Name" />
+            <input type="text" placeholder="Last Name" />
+			<input type="email" placeholder="Email" />
+			<input type="password" placeholder="Password" />
+			<button (click)="addActiveContainer()">Sign Up</button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form action="#">
+			<h1>Sign in</h1>
+			<input type="email" placeholder="Email" />
+			<input type="password" placeholder="Password" />
+			<a href="#">Forgot your password?</a>
+			<button (click) = "removeActiveContainer()">Sign In</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Welcome Back!</h1>
+				<p>Please login to start exploring world of knowledge !</p>
+				<button class="ghost" id="signIn" (click)="removeActiveContainer()">Sign In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Hello, Friend!</h1>
+				<p>Please sign up and start journey with us</p>
+				<button class="ghost" id="signUp" (click)="addActiveContainer()">Sign Up</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer>
+	<p>
+		Created by Kenny, Jason and Christian.
+	</p>
+</footer>
+
