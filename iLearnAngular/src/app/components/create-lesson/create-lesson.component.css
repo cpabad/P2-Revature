@@ -1,0 +1,35 @@
+div{
+    background-color: mediumaquamarine;
+    width: 27em;
+    border: solid black;
+}
+
+h2, button{
+    text-align: center;
+}
+
+#createLessonButton{
+    display: block;
+    margin: auto;
+}
+
+#lessonTitleLabel{
+    text-align: left;
+    padding-right: 10px;
+    padding-left: 20px;
+}
+
+#lessonContentLabel{
+    text-align: left;
+    padding-right: 10px;
+    padding-left: 20px;
+}
+
+#lessonTitle{
+    width: 12em;
+    height: 1em;
+}
+
+#lessonContent{
+    padding-left: 27.5px;
+}
