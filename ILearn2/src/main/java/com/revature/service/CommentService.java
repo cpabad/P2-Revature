@@ -37,13 +37,14 @@ public class CommentService {
 		return this.commentRepository.findByAuthor(author);
 	}
 	
-
 	public void createComment(Comment comment) {
 		this.commentRepository.save(comment);
 	}
 	
 	public void updateComment(Comment comment) {
-		this.commentRepository.save(comment);
+		if(this.commentRepository.existsByCommentid(comment.getCommentid()) == true) {
+			this.commentRepository.save(comment);
+		}
 	}
 	
 	public void deleteComment(Comment comment) {
