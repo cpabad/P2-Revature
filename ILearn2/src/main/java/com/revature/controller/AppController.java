@@ -83,5 +83,11 @@ public class AppController {
 		return this.courseService.getAllCourses();
 	}
 	
+	@GetMapping(path = "/allCoursesByCreator")
+	public List<Course> getAllCoursesByCreator(@RequestParam int userid){
+		
+		return this.courseService.getAllByCreator(userid);
+		
+	}
 	
 }
