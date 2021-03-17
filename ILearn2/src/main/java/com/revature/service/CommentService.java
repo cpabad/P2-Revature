@@ -1,5 +1,6 @@
 package com.revature.service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,9 @@ public class CommentService {
 	}
 	
 	public void updateComment(Comment comment) {
-		this.commentRepository.save(comment);
+		if(this.commentRepository.existsByCommentid(comment.getCommentid()) == true) {
+			this.commentRepository.save(comment);
+		}
 	}
 	
 	public void deleteComment(Comment comment) {
