@@ -1,3 +1,7 @@
+/**
+ * @author kenny Huang
+ */
+
 import { User } from "./user";
 
 export class Course{

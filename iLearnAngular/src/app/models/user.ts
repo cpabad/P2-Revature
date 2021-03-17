@@ -1,3 +1,7 @@
+/**
+ * @author kenny Huang
+ */
+
 import { Course } from "./course";
 
 export class User{
@@ -7,11 +11,11 @@ export class User{
     user_password: String;
     first_name: String;
     last_name: String;
-    enrolled_courses: Set<Course>;
+    enrolled_courses: Course[];
 
 
     constructor(userid: number, email: String, user_password: String, first_name: String,
-        last_name:String, enrolled_courses: Set<Course>){
+        last_name:String, enrolled_courses:Course[]){
 
             this.userid = userid;
             this.email = email;

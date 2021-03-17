@@ -50,7 +50,7 @@ public class CommentService {
 	}
 	
 	public void updateComment(Comment comment) {
-		if(this.commentRepository.existsByCommentid(comment.getCommentid()) == false) {
+		if(this.commentRepository.existsByCommentid(comment.getCommentid()) == true) {
 			this.commentRepository.save(comment);
 		}
 	}
