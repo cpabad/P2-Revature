@@ -5,20 +5,46 @@
     <title>Create a course</title>
 </head>
 <body>
-    <h1 style="text-align: center;">Create a course!</h1>
+    <div id= courseTable>
+        <h1 style="text-align: center;">My Courses</h1>
+        <table id =table1>
+            <thead>
+                <tr>
+                    <td>#</td>
+                    <td>Course Title</td>
+                    <td>Public Access</td>
+                    <td>Access Code</td>
+                    <td>Students Enrolled</td>
+                </tr>
+            </thead>
+            <tbody id="infoHere">
+                <tr *ngFor="let c of myCourses">
+                    <td>{{index + 1}}</td>
+                    <td>{{c.title}}</td>
+                    <td>{{c.public_access}}</td>
+                    <td>{{c.access_code}}</td>
+                    <td>{{c.number_enrolled}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <button (click) = "changeVisibility()"> Add a course</button>
+    </div>
 
-    <div id = "courseSubmit"> 
+    <div id = "courseSubmit" style="visibility:hidden"> 
+        <h1 style="text-align: center;">Create a course!</h1>
         <form>
             <label>Title</label>
-            <input type="text" name="title"/><br>
+            <input [(ngModel)]="newCourse.title" type="text" name="title"/><br>
             <label>Description</label>
-            <input type="text"  name="Description"/><br>
+            <input  [(ngModel)]="newCourse.description" type="text"  name="description"/><br>
             <label>Public Access</label>
-            <input type="checkbox"  name="Access"/><br>
+            <input  [(ngModel)]="newCourse.public_access" type="checkbox"  name="access"/><br>
+            <label>Date Created</label>
+            <input  [(ngModel)]="newCourse.date_created" type="date"  name="datecreation"/><br>
             <label>Access Code</label>
-            <input type="number"  name="destination"/><br>
+            <input  [(ngModel)]="newCourse.access_code" type="number"  name="accesscode"/><br>
            
-            <button class = "submit">Add Course</button>
+            <button (click)="addCourse()" class = "submit">Add Course</button>
 
         </form>
 

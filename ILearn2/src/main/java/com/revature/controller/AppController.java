@@ -110,9 +110,18 @@ public class AppController {
 	
 	@GetMapping(path = "/allCoursesByCreator")
 	public List<Course> getAllCoursesByCreator(@RequestParam int userid){
-		
 		return this.courseService.getAllByCreator(userid);
-		
 	}
 	
+	@PostMapping(path = "/addCourse")
+	public void addCourse(@RequestBody Course course) {
+		User user = userService.getUserById(course.getCreator().getUserid());
+		course.setCreator(user);
+		this.courseService.addCourse(course);
+	}
+	
+	@GetMapping(path = "/my-courses")
+	public List<Course> getAllByCreator(@RequestParam String email){
+		return this.courseService.getAllByCreator(email);
+	}
 }

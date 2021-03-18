@@ -60,6 +60,17 @@ public class CourseService {
 		} else {
 			return null;
 		}
+		
+		
 	}
-
+	
+	public List<Course> getAllByCreator(String email){
+		
+		User user = this.userService.getUserByEmail(email);		
+		if(user!=null) {
+			return this.courseRepository.findByCreator(user);
+		} else {
+			return null;
+		}
+	}
 }

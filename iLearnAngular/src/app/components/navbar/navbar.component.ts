@@ -15,6 +15,6 @@ export class NavbarComponent implements OnInit {
   }
 
   isLoggedIn:boolean = this.userService.isLoggedIn()
-  username:String = sessionStorage.getItem('username')
+  username:String = sessionStorage.getItem('email')
 
 }
