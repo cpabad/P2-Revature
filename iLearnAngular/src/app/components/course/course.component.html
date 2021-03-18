@@ -10,12 +10,22 @@
         <table id =table1>
             <thead>
                 <tr>
+                    <td>#</td>
                     <td>Course Title</td>
                     <td>Public Access</td>
                     <td>Access Code</td>
                     <td>Students Enrolled</td>
                 </tr>
             </thead>
+            <tbody id="infoHere">
+                <tr *ngFor="let c of myCourses">
+                    <td>{{index + 1}}</td>
+                    <td>{{c.title}}</td>
+                    <td>{{c.public_access}}</td>
+                    <td>{{c.access_code}}</td>
+                    <td>{{c.number_enrolled}}</td>
+                </tr>
+            </tbody>
         </table>
         <button (click) = "changeVisibility()"> Add a course</button>
     </div>
@@ -28,11 +38,11 @@
             <label>Description</label>
             <input  [(ngModel)]="newCourse.description" type="text"  name="description"/><br>
             <label>Public Access</label>
-            <input  [(ngModel)]="newCourse.access_code" type="checkbox"  name="access"/><br>
+            <input  [(ngModel)]="newCourse.public_access" type="checkbox"  name="access"/><br>
             <label>Date Created</label>
             <input  [(ngModel)]="newCourse.date_created" type="date"  name="datecreation"/><br>
             <label>Access Code</label>
-            <input  [(ngModel)]="newCourse.number_enrolled" type="number"  name="enrolled"/><br>
+            <input  [(ngModel)]="newCourse.access_code" type="number"  name="accesscode"/><br>
            
             <button (click)="addCourse()" class = "submit">Add Course</button>
 

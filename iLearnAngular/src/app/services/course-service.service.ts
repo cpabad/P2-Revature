@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient, HttpParams} from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { Course } from '../models/course';
 
@@ -16,7 +16,15 @@ export class CourseServiceService {
 
   }
 
+  findAllCourseByEmail(email:String):Observable<Course[]>{
+    let params = new HttpParams()
+        .set('email', email.valueOf())
+    return this.httpClient.get('http://localhost:8080/iLearn/my-courses',{params:params})as Observable<Course[]>;
+
+}
+
+
   addCourse(course:Course):Observable<Course>{
-      return this.httpClient.post<Course>('http://localhost:8080/iLearn/enrollCourse',course)
+      return this.httpClient.post<Course>('http://localhost:8080/iLearn/addCourse',course)
   }
 }

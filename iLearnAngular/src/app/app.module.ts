@@ -28,7 +28,6 @@ import { LogoutComponent } from './components/logout/logout.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
     FormsModule,
     HttpClientModule
   ],

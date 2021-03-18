@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseServiceService } from 'src/app/services/course-service.service';
 import { Course } from 'src/app/models/course'
+import { User } from 'src/app/models/user';
 
 
 @Component({
@@ -13,10 +14,14 @@ export class CourseComponent implements OnInit {
   constructor(private courseService:CourseServiceService) { }
 
   course:Course[] = [];
-  newCourse:Course = new Course(0,"",null,"",new Date(),true,0,0);
+  newCourse:Course = new Course(0,"",new User(12,"","","","",this.course),"",new Date(),true,0,0);
+  email:String = sessionStorage.getItem('email');
+
+  index:number = 0;
+  myCourses:Course[]
 
   ngOnInit(): void {
-   // this.findAllCourseByUserId();
+   this.findAllCourseByEmail(this.email);
   }
 
 
@@ -30,6 +35,16 @@ export class CourseComponent implements OnInit {
       }
     )
   }
+  findAllCourseByEmail(email:String){
+    this.courseService.findAllCourseByEmail(email).subscribe(
+    (data)=>{
+        this.myCourses = data;
+    },
+    () =>{
+      console.log("Something went wrong");
+    }
+  )
+}
 
   addCourse(){
     this.courseService.addCourse(this.newCourse).subscribe(
