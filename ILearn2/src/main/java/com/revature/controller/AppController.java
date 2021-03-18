@@ -24,7 +24,7 @@ import com.revature.service.UserService;
 
 @RestController(value = "appController")
 @RequestMapping(path = "/iLearn")
-@CrossOrigin()
+@CrossOrigin(origins = {"http://localhost:4200"})
 public class AppController {
 	
 	@Autowired
