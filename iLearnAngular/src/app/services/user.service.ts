@@ -26,8 +26,16 @@ export class UserService {
           .set('password', password.valueOf());
     return this.httpClient.get<User>('http://localhost:8080/iLearn/validateLogin',{params:params}) as Observable<User>
        
-      
-    
+  }
+
+
+  isLoggedIn(){
+    let user = sessionStorage.getItem('username')
+    return !(user === null)
+  }
+
+  logout(){
+    sessionStorage.removeItem('username')
   }
 
   register(user:User):Observable<User>{

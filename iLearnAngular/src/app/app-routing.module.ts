@@ -4,12 +4,13 @@ import { CreateLessonComponent } from './components/create-lesson/create-lesson.
 import { LoginComponent } from './components/login/login.component';
 import { CourseComponent } from './components/course/course.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 const routes: Routes = [
   {
     path: '',component: HomepageComponent
   },
-  
+
   {
     path: "create-lesson",
     component: CreateLessonComponent
@@ -19,6 +20,9 @@ const routes: Routes = [
     component: LoginComponent
 
 },
+  {
+    path: 'logout', component:LogoutComponent
+  },
   {
     path:"course",
     component: CourseComponent

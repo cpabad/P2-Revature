@@ -11,6 +11,7 @@ import { CreateLessonComponent } from './components/create-lesson/create-lesson.
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     CourseComponent,
     NavbarComponent,
     CreateLessonComponent,
-    LoginComponent
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
