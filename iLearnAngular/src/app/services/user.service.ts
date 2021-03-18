@@ -24,7 +24,7 @@ export class UserService {
 
   login(email:String, password: String):Observable<String> {
     
-    return this.httpClient.post<String>('http://localhost:8080/iLearn/login',{email, password})
+    return this.httpClient.post<String>('http://localhost:8080/iLearn/login?email=' + email + '&password=' + password, null)
 
   }
 
