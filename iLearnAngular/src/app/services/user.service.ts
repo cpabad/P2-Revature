@@ -4,10 +4,11 @@
  *
  */
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,19 @@ import { User } from '../models/user';
 export class UserService {
 
   constructor(private httpClient:HttpClient) {}
+
+  user:User;
+
+  authenticate(email:String,password:String):Observable<User>{
+
+    let params =  new HttpParams()
+          .set('email', email.valueOf())
+          .set('password', password.valueOf());
+    return this.httpClient.get<User>('http://localhost:8080/iLearn/validateLogin',{params:params}) as Observable<User>
+       
+      
+    
+  }
 
   register(user:User):Observable<User>{
 

@@ -10,6 +10,7 @@ import { CourseComponent } from './components/course/course.component';
 import { CreateLessonComponent } from './components/create-lesson/create-lesson.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from '@angular/forms';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     HomepageComponent,
     LessonComponent,
     CourseComponent,
+    NavbarComponent,
     CreateLessonComponent,
     LoginComponent
   ],

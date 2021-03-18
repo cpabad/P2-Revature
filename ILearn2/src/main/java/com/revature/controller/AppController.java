@@ -24,7 +24,7 @@ import com.revature.service.UserService;
 
 @RestController(value = "appController")
 @RequestMapping(path = "/iLearn")
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin()
 public class AppController {
 	
 	@Autowired
@@ -61,6 +61,16 @@ public class AppController {
 	@GetMapping(path = "/getUserById")
 	public User getUserById(int id) {
 		return this.userService.getUserById(id);
+	}
+	
+	@GetMapping(path = "/validateLogin")
+	public User getUserById(@RequestParam String email, @RequestParam String password) {
+		if(this.userService.login(email, password)) {
+			return this.userService.getUserByEmail(email);
+		}else {
+			return null;
+		}
+		
 	}
 	
 	@PostMapping(path = "/addUser", consumes = {MediaType.APPLICATION_JSON_VALUE})
