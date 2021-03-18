@@ -3,8 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { CreateLessonComponent } from './components/create-lesson/create-lesson.component';
 import { LoginComponent } from './components/login/login.component';
 import { CourseComponent } from './components/course/course.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
 
 const routes: Routes = [
+  {
+    path: '',component: HomepageComponent
+  },
+  
   {
     path: "create-lesson",
     component: CreateLessonComponent

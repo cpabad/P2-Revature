@@ -2,8 +2,13 @@ package com.revature.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,14 +33,24 @@ public class AppController {
 	@Autowired
 	private CourseService courseService;
 	
-	
 	@PostMapping(path = "/login")
-	public String login(@RequestParam String email, @RequestParam String password){
+	public ResponseEntity<String> login(@RequestParam String email, @RequestParam String password, HttpServletRequest request){
 		if(this.userService.login(email, password)) {
-			
-			return "Successufully login! ";
+			HttpSession session = request.getSession();
+			session.setAttribute("user", this.userService.getUserByEmail(email));
+			return ResponseEntity.status(HttpStatus.OK).body("Successufully login! ");
 		}
-		return "Incorrect email or password!";
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Incorrect email or password!");
+	}
+	
+	@PostMapping(path = "/logout")
+	public ResponseEntity<String> logout(HttpServletRequest request) {
+		if(request.getSession(false) != null) {
+			request.getSession(false).invalidate();
+			return ResponseEntity.status(HttpStatus.OK).body("Successufully logout! ");
+		} else {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("No user logged in!");
+		}
 	}
 	
 	@GetMapping(path = "/allUsers")
@@ -46,6 +61,16 @@ public class AppController {
 	@GetMapping(path = "/getUserById")
 	public User getUserById(int id) {
 		return this.userService.getUserById(id);
+	}
+	
+	@GetMapping(path = "/validateLogin")
+	public User getUserById(@RequestParam String email, @RequestParam String password) {
+		if(this.userService.login(email, password)) {
+			return this.userService.getUserByEmail(email);
+		}else {
+			return null;
+		}
+		
 	}
 	
 	@PostMapping(path = "/addUser", consumes = {MediaType.APPLICATION_JSON_VALUE})
