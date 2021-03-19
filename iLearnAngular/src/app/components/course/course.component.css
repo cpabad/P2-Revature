@@ -30,8 +30,9 @@ input[type=text],[type=number]{
 
   div {
     border-radius: 5px;
-    background-color: #f2f2f2;
+    background-color: rgb(242, 242, 242,.8);
     padding: 20px;
+    
   }
  
   label {
@@ -50,7 +51,7 @@ input[type=text],[type=number]{
 
   .submit{
     height:20px; 
-    width:100px; 
+    width:150px; 
     margin: -20px -50px; 
     position:relative;
     top:50%; 

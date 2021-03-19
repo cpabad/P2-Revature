@@ -25,9 +25,14 @@ public class CommentService {
 		return this.commentRepository.findByCommentid(id);
 	}
 	
+	
+	
+
 	public List<Comment> findByAuthor(User author) {
 		return this.commentRepository.findByAuthor(author);
 	}
+	
+
 	
 	public void createComment(Comment comment) {
 		this.commentRepository.save(comment);
