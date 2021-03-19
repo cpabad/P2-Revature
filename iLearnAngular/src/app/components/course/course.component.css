@@ -48,7 +48,7 @@ input[type=text],[type=number]{
     width: 100%;
   }
 
-  button{
+  .submit{
     height:20px; 
     width:100px; 
     margin: -20px -50px; 

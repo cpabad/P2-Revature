@@ -15,6 +15,7 @@
                     <td>Public Access</td>
                     <td>Access Code</td>
                     <td>Students Enrolled</td>
+                    <td> Options </td>
                 </tr>
             </thead>
             <tbody id="infoHere">
@@ -23,11 +24,12 @@
                     <td>{{c.title}}</td>
                     <td>{{c.public_access}}</td>
                     <td>{{c.access_code}}</td>
-                    <td>{{c.number_enrolled}}</td>
+                    <td>{{c.number_enrolled}}</td>   
+                    <td> <button (click) = "deleteCourse()">Delete</button> </td> 
                 </tr>
             </tbody>
         </table>
-        <button (click) = "changeVisibility()"> Add a course</button>
+        <button (click) = "changeVisibility()" class = "submit"> Add a course</button>
     </div>
 
     <div id = "courseSubmit" style="visibility:hidden"> 
