@@ -17,6 +17,7 @@ import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.amazonaws.services.s3.model.CannedAccessControlList;
+import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 
 @Service
@@ -78,6 +79,12 @@ public class S3Service {
 			e.printStackTrace();
 		}
 		return fileUrl;
+	}
+	
+	public String deleteFile(String fileUrl) {
+	    String fileName = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
+	    s3client.deleteObject(new DeleteObjectRequest(this.bucketName, fileName));
+	    return "Successfully deleted";
 	}
 
 }

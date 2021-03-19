@@ -5,6 +5,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,9 +27,14 @@ public class S3Controller {
 		System.out.println("bucketName = " + env.getProperty("amazon.bucketName"));
 	}
 	
-	@PostMapping("/uploadFile")
+	@PostMapping("/new")
 	public String uploadFile(@RequestPart(value = "file") MultipartFile file) {
 		return this.s3Service.uploadFile(file);
+	}
+	
+	@PostMapping("/delete")
+	public String deleteFile(@RequestPart String url) {
+		return this.s3Service.deleteFile(url);
 	}
 
 }
