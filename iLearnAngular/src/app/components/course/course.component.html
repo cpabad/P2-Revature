@@ -27,10 +27,11 @@
                 </tr>
             </tbody>
         </table>
-        <button (click) = "changeVisibility()" class = "submit"> Add a course</button>
+        <button (click) = "changeCourseVisibility()" class = "submit"> Add a course</button><br>
+        <button (click) = "changeEditCourseVisibility()" class = "submit"> Edit a course</button>
     </div>
 
-    <div id = "editCourse" >
+    <div id = "editCourse" style="visibility:hidden">
     <h1 style="text-align: center;">Edit a course</h1>
         <form>
             <label>Enter The Course ID:</label>
@@ -39,7 +40,7 @@
         </form>
     </div>
 
-    <div id = "editCourse" style="visibility:visible"> 
+    <div id = "editForm" style="visibility:hidden"> 
         <form>
             <label>Title</label>
             <input [(ngModel)]="getCourse.title" type="text" name="title"/><br>
@@ -48,7 +49,7 @@
             <label>Public Access</label>
             <input  [(ngModel)]="getCourse.public_access" type="checkbox"  name="access"/><br>
             <label>Access Code </label>
-            <input  [(ngModel)]="getCourse.access_code" type="number"  name="accesscode"/><br>
+            <input  [(ngModel)]="getCourse.access_code" type="text"  name="accesscode"/><br>
            
             <button (click)="editCourse()" class = "submit">Execute Update</button><br><br>
             <button (click) = "deleteCourse()" class = "submit"> Delete Course</button>
@@ -70,7 +71,7 @@
             <label>Date Created</label>
             <input  [(ngModel)]="newCourse.date_created" type="date"  name="datecreation"/><br>
             <label>Access Code</label>
-            <input  [(ngModel)]="newCourse.access_code" type="number"  name="accesscode"/><br>
+            <input  [(ngModel)]="newCourse.access_code" type="text"  name="accesscode"/><br>
            
             <button (click)="addCourse()" class = "submit">Add Course</button>
 

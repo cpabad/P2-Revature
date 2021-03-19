@@ -14,8 +14,8 @@ export class CourseComponent implements OnInit {
   constructor(private courseService:CourseServiceService) { }
 
   course:Course[] = [];
-  newCourse:Course = new Course(0,"",new User(12,"","","","",this.course),"",new Date(),true,0,0);
-  getCourse:Course = new Course(0,"",new User(12,"","","","",this.course),"",new Date(),true,0,0);
+   newCourse:Course = new Course(0,"",new User(12,"","","","",this.course),"",new Date(),true,'',0);
+  getCourse:Course = new Course(0,"",new User(12,"","","","",this.course),"",new Date(),true,'',0);
   email:String = sessionStorage.getItem('email');
   id:String ="";
 
@@ -48,6 +48,7 @@ export class CourseComponent implements OnInit {
   }
 
   findCourseById(){
+    this.changeEditFormVisibility();
     this.courseService.findCourseById(this.id).subscribe(
       (data)=>{
         this.getCourse = data;
@@ -83,8 +84,24 @@ export class CourseComponent implements OnInit {
 
   
 
-  changeVisibility(){
+  changeCourseVisibility(){
     var doc = document.getElementById("courseSubmit");
+    if (doc.style.visibility==='hidden'){
+      doc.style.visibility='visible';
+    } else{
+      doc.style.visibility='hidden';
+    }
+  }
+  changeEditCourseVisibility(){
+    var doc = document.getElementById("editCourse");
+    if (doc.style.visibility==='hidden'){
+      doc.style.visibility='visible';
+    } else{
+      doc.style.visibility='hidden';
+    }
+  }
+  changeEditFormVisibility(){
+    var doc = document.getElementById("editForm");
     if (doc.style.visibility==='hidden'){
       doc.style.visibility='visible';
     } else{
