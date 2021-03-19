@@ -57,6 +57,17 @@ export class CourseComponent implements OnInit {
     )
   }
 
+  deleteCourse(){
+    this.courseService.deleteCourse(this.newCourse).subscribe(
+      (data)=>{
+        console.log(data)
+      },
+      () =>{
+        console.log("error in course component")
+      }
+    )
+  }
+
   changeVisibility(){
     var doc = document.getElementById("courseSubmit");
     if (doc.style.visibility==='hidden'){

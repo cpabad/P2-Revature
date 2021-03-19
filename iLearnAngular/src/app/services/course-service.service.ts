@@ -27,4 +27,8 @@ export class CourseServiceService {
   addCourse(course:Course):Observable<Course>{
       return this.httpClient.post<Course>('http://localhost:8080/iLearn/addCourse',course)
   }
+
+  deleteCourse(course:Course):Observable<Course>{
+    return this.httpClient.post<Course>('http://localhost:8080/iLearn/deleteCourse',course)
+}
 }
