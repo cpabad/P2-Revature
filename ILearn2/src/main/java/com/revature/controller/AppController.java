@@ -63,6 +63,13 @@ public class AppController {
 		return this.userService.getUserById(id);
 	}
 	
+	//This is the method that sent User object back to client
+	//When user request one by user's email
+	@GetMapping(path = "/user")
+	public User getUserByEmail(@RequestParam String email) {
+		return this.userService.getUserByEmail(email);
+	}
+	
 	@GetMapping(path = "/validateLogin")
 	public User getUserById(@RequestParam String email, @RequestParam String password) {
 		if(this.userService.login(email, password)) {
