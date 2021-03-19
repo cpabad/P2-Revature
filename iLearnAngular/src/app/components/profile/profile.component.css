@@ -253,3 +253,10 @@ footer a {
     color: #3c97bf;
     text-decoration: none;
 }
+
+::placeholder{
+	color: blue;
+	font-weight: bolder;
+	font-style:inherit;
+	font-family:cursive;
+}

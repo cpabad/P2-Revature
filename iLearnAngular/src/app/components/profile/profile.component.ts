@@ -20,7 +20,16 @@ export class ProfileComponent implements OnInit {
     
   }
 
-  Update(){
+  update(){
+
+      this.userService.updateProfile(this.loggedInUser).subscribe(
+        (data) =>{
+          console.log(data)
+        },
+        ()=>{
+          console.log('Errorrrrr!')
+        }
+      )
 
   }
 

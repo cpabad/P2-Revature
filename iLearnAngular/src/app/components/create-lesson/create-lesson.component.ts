@@ -18,7 +18,7 @@ export class CreateLessonComponent implements OnInit {
   }
   lessons:Lesson[];
   creator:User = new User(0, '', '', '', '', []);
-  courseWithNewLesson:Course = new Course(0, '', this.creator, '', new Date(), 0);
+  courseWithNewLesson:Course = new Course(0, '', this.creator, '', new Date(),true,'',0);
   newLesson: Lesson = new Lesson(0, '', this.courseWithNewLesson, "");
   createLessonDiv:boolean = true; //Change to false so I can hover over a course and add it
 

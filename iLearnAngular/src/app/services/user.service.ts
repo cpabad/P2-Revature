@@ -51,6 +51,12 @@ export class UserService {
     sessionStorage.removeItem('email')
   }
 
+  updateProfile(user:User):Observable<User>{
+
+    return this.httpClient.post<User>('http://localhost:8080/iLearn/updateUser', user)
+
+  }
+
   register(user:User):Observable<User>{
 
     return this.httpClient.post<User>('http://localhost:8080/iLearn/addUser', user)
