@@ -10,7 +10,7 @@ export class NavbarComponent implements OnInit {
 
   username:String
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,) { }
 
 
   ngOnInit(): void {

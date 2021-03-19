@@ -14,7 +14,7 @@ export class CourseComponent implements OnInit {
   constructor(private courseService:CourseServiceService) { }
 
   course:Course[] = [];
-  newCourse:Course = new Course(0,"",new User(12,"","","","",this.course),"",new Date(),true,0,0);
+  newCourse:Course = new Course(0,"",new User(12,"","","","",this.course),"",new Date(),true,'',0);
   email:String = sessionStorage.getItem('email');
 
   index:number = 0;

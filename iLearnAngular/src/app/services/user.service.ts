@@ -41,8 +41,20 @@ export class UserService {
     return !(user === null)
   }
 
+  getUser(email:String){
+    let params = new HttpParams()
+        .set('email', email.valueOf())
+    return this.httpClient.get('http://localhost:8080/iLearn/user',{params:params})as Observable<User>;
+  }
+
   logout(){
     sessionStorage.removeItem('email')
+  }
+
+  updateProfile(user:User):Observable<User>{
+
+    return this.httpClient.post<User>('http://localhost:8080/iLearn/updateUser', user)
+
   }
 
   register(user:User):Observable<User>{
