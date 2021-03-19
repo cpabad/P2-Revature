@@ -13,8 +13,6 @@ import com.revature.model.User;
 public interface CommentRepository extends JpaRepository<Comment, Integer> {
 	
 	Comment findByCommentid(int id);
-	List<Comment> findByLesson(Lesson lesson);
-	List<Comment> findByAuthorAndLesson(User author, Lesson lesson);
 	List<Comment> findByAuthor(User author);
 	<S extends Comment> S save(Comment comment);
 	boolean existsByCommentid(int id);

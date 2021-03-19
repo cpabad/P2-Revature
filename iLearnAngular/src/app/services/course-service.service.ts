@@ -10,11 +10,6 @@ export class CourseServiceService {
 
   constructor(private httpClient:HttpClient) { }
 
-  //needs to be mapped to endpoint
-  findAllCourseByUserId(id:number):Observable<Course[]>{
-      return this.httpClient.get('http')as Observable<Course[]>;
-
-  }
 
   findAllCourseByEmail(email:String):Observable<Course[]>{
     let params = new HttpParams()
@@ -28,7 +23,20 @@ export class CourseServiceService {
       return this.httpClient.post<Course>('http://localhost:8080/iLearn/addCourse',course)
   }
 
+  findCourseById(id:String):Observable<Course>{
+      let params = new HttpParams()
+          .set('id',id.valueOf())
+    return this.httpClient.get('http://localhost:8080/iLearn/courseid',{params:params}) as Observable<Course>;
+}
+
+  editCourse(course:Course):Observable<Course>{
+    return this.httpClient.post<Course>('http://localhost:8080/iLearn/updateCourse',course)
+  }
+
   deleteCourse(course:Course):Observable<Course>{
     return this.httpClient.post<Course>('http://localhost:8080/iLearn/deleteCourse',course)
 }
+
 }
+
+

@@ -14,8 +14,10 @@ export class CourseComponent implements OnInit {
   constructor(private courseService:CourseServiceService) { }
 
   course:Course[] = [];
-  newCourse:Course = new Course(0,"",new User(12,"","","","",this.course),"",new Date(),true,'',0);
+  newCourse:Course = new Course(0,"",new User(12,"","","","",this.course),"",new Date(),true,0,0);
+  getCourse:Course = new Course(0,"",new User(12,"","","","",this.course),"",new Date(),true,0,0);
   email:String = sessionStorage.getItem('email');
+  id:String ="";
 
   index:number = 0;
   myCourses:Course[]
@@ -57,8 +59,20 @@ export class CourseComponent implements OnInit {
     )
   }
 
-  deleteCourse(){
-    this.courseService.deleteCourse(this.newCourse).subscribe(
+  findCourseById(){
+    this.courseService.findCourseById(this.id).subscribe(
+      (data)=>{
+        this.getCourse = data;
+        console.log(data)
+      },
+      () =>{
+        console.log("error in course component")
+      }
+    )
+  }
+
+  editCourse(){
+    this.courseService.editCourse(this.getCourse).subscribe(
       (data)=>{
         console.log(data)
       },
@@ -67,6 +81,19 @@ export class CourseComponent implements OnInit {
       }
     )
   }
+
+  deleteCourse(){
+    this.courseService.deleteCourse(this.getCourse).subscribe(
+      (data)=>{
+        console.log(data)
+      },
+      () =>{
+        console.log("error in course component")
+      }
+    )
+  }
+
+  
 
   changeVisibility(){
     var doc = document.getElementById("courseSubmit");
