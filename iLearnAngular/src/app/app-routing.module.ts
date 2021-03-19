@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-<<<<<<< HEAD
 import { CreateLessonComponent } from './components/create-lesson/create-lesson.component';
 import { LoginComponent } from './components/login/login.component';
+import { CourseComponent } from './components/course/course.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 const routes: Routes = [
+  {
+    path: '',component: HomepageComponent
+  },
+
   {
     path: "create-lesson",
     component: CreateLessonComponent
@@ -12,14 +18,15 @@ const routes: Routes = [
   {
     path: "login",
     component: LoginComponent
-=======
-import { CourseComponent } from './components/course/course.component';
 
-const routes: Routes = [
+},
+  {
+    path: 'logout', component:LogoutComponent
+  },
   {
     path:"course",
     component: CourseComponent
->>>>>>> 8d08b9e922a1a55e346362816d7b13c7a2cd6f8f
+
   }
 ];
 

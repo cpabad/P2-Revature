@@ -1,6 +1,6 @@
 input[type=text],[type=number]{
-    width: 100%;
-    padding: 12px 20px;
+    width: 65%;
+    padding: 10px 10px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
@@ -9,7 +9,7 @@ input[type=text],[type=number]{
   }
 
   input[type=checkbox]{
-    width: 3%;
+    width: 5%;
     padding: 5px 10px;
     margin: 8px 0;
     display: inline-block;
@@ -18,9 +18,42 @@ input[type=text],[type=number]{
     box-sizing: border-box;
   }
 
+  input[type=date]{
+    width: 25%;
+    padding: 5px 10px;
+    margin: 8px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 9px;
+    box-sizing: border-box;
+  }
+
   div {
     border-radius: 5px;
-    background-color: #f2f2f2;
+    background-color: rgb(242, 242, 242,.8);
     padding: 20px;
+    
   }
  
+  label {
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+  }
+
+  table{
+    border-style: solid;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    width: 100%;
+  }
+
+  .submit{
+    height:20px; 
+    width:150px; 
+    margin: -20px -50px; 
+    position:relative;
+    top:50%; 
+    left:50%;
+}

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
@@ -8,6 +9,10 @@ import { LessonComponent } from './components/lesson/lesson.component';
 import { CourseComponent } from './components/course/course.component';
 import { CreateLessonComponent } from './components/create-lesson/create-lesson.component';
 import { LoginComponent } from './components/login/login.component';
+import { FormsModule } from '@angular/forms';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { EnrollCourseComponent } from './components/enroll-course/enroll-course.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +20,18 @@ import { LoginComponent } from './components/login/login.component';
     HomepageComponent,
     LessonComponent,
     CourseComponent,
+    NavbarComponent,
     CreateLessonComponent,
-    LoginComponent
+    LoginComponent,
+    LogoutComponent,
+    EnrollCourseComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
