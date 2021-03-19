@@ -19,7 +19,7 @@ export class CourseComponent implements OnInit {
   email:String = sessionStorage.getItem('email');
   id:String ="";
 
-  index:number = 0;
+
   myCourses:Course[]
 
   ngOnInit(): void {
@@ -51,6 +51,7 @@ export class CourseComponent implements OnInit {
   }
 
   findCourseById(){
+    this.changeEditFormVisibility();
     this.courseService.findCourseById(this.id).subscribe(
       (data)=>{
         this.getCourse = data;
@@ -86,8 +87,24 @@ export class CourseComponent implements OnInit {
 
   
 
-  changeVisibility(){
+  changeCourseVisibility(){
     var doc = document.getElementById("courseSubmit");
+    if (doc.style.visibility==='hidden'){
+      doc.style.visibility='visible';
+    } else{
+      doc.style.visibility='hidden';
+    }
+  }
+  changeEditCourseVisibility(){
+    var doc = document.getElementById("editCourse");
+    if (doc.style.visibility==='hidden'){
+      doc.style.visibility='visible';
+    } else{
+      doc.style.visibility='hidden';
+    }
+  }
+  changeEditFormVisibility(){
+    var doc = document.getElementById("editForm");
     if (doc.style.visibility==='hidden'){
       doc.style.visibility='visible';
     } else{
