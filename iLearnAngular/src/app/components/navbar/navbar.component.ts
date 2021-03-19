@@ -8,13 +8,19 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class NavbarComponent implements OnInit {
 
+  username:String
+
   constructor(private userService: UserService) { }
 
 
   ngOnInit(): void {
+    this.username = sessionStorage.getItem('email')
   }
 
-  isLoggedIn:boolean = this.userService.isLoggedIn()
-  username:String = sessionStorage.getItem('email')
+  getIsLoggedIn(){
+    return this.userService.isLoggedIn()
+  }
+  
 
 }
+ 
