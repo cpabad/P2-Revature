@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CourseServiceService } from 'src/app/services/course-service.service';
 import { Course } from 'src/app/models/course'
 import { User } from 'src/app/models/user';
+import { UserService } from 'src/app/services/user.service';
+
 
 
 @Component({
@@ -11,22 +13,34 @@ import { User } from 'src/app/models/user';
 })
 export class CourseComponent implements OnInit {
 
-  constructor(private courseService:CourseServiceService) { }
+  constructor(private courseService:CourseServiceService, private userService:UserService) { }
 
   course:Course[] = [];
-  newCourse:Course = new Course(0,"",new User(12,"","","","",this.course),"",new Date(),true,'',0);
-  getCourse:Course = new Course(0,"",new User(12,"","","","",this.course),"",new Date(),true,'',0);
   email:String = sessionStorage.getItem('email');
   id:String ="";
 
+  user:User = new User(0,"","","","",[]);
+
+  newCourse:Course = new Course(0,"",this.user,"",new Date(),true,'',0);
+  getCourse:Course = new Course(0,"",this.user,"",new Date(),true,'',0);
 
   myCourses:Course[]
 
   ngOnInit(): void {
    this.findAllCourseByEmail(this.email);
+   this.getloggedInUser(this.email);
+   
   }
 
-
+  getloggedInUser(email:String){
+    this.userService.getUser(email).subscribe(
+      (data)=>{
+        this.user = data;
+      },() => {
+              console.log("Something went wrong");
+        }
+    )
+  }
  
   findAllCourseByEmail(email:String){
     this.courseService.findAllCourseByEmail(email).subscribe(
@@ -40,9 +54,10 @@ export class CourseComponent implements OnInit {
 }
 
   addCourse(){
+    this.newCourse.creator=this.user;
     this.courseService.addCourse(this.newCourse).subscribe(
       (data)=>{
-        console.log(data)
+        console.log(data+"course")
       },
       () =>{
         console.log("error in course component")
@@ -55,7 +70,6 @@ export class CourseComponent implements OnInit {
     this.courseService.findCourseById(this.id).subscribe(
       (data)=>{
         this.getCourse = data;
-        console.log(data)
       },
       () =>{
         console.log("error in course component")
