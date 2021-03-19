@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.revature.model.Course;
 import com.revature.model.Lesson;
 import com.revature.repository.LessonRepository;
 
@@ -32,5 +33,9 @@ public class LessonService {
 	
 	public List<Lesson> getAllLessons(){
 		return this.lessonRepository.findAll();
+	}
+	
+	public List<Lesson> getLessonsByCourse(Course course) {
+		return this.lessonRepository.findByCourse(course);
 	}
 }
