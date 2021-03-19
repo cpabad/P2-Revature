@@ -124,4 +124,22 @@ public class AppController {
 	public List<Course> getAllByCreator(@RequestParam String email){
 		return this.courseService.getAllByCreator(email);
 	}
+	
+	@GetMapping(path = "/courseid")
+	public Course getByCourseid(@RequestParam String id){
+		int t = Integer.parseInt(id);
+		return this.courseService.getCourseById(t);
+	}
+	
+	@PostMapping(path = "/updateCourse")
+	public void updateCourse(@RequestBody Course course) {
+		this.courseService.updateCourse(course);
+	}
+	
+	@PostMapping(path = "/deleteCourse")
+	public void deleteCourse(@RequestBody Course course) {
+		User user = userService.getUserById(course.getCreator().getUserid());
+		course.setCreator(user);
+		this.courseService.deleteCourse(course);
+	}
 }

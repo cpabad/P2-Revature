@@ -10,27 +10,53 @@
         <table id =table1>
             <thead>
                 <tr>
-                    <td>#</td>
+                    <td>Course ID</td>
                     <td>Course Title</td>
                     <td>Public Access</td>
                     <td>Access Code</td>
                     <td>Students Enrolled</td>
-                    <td> Options </td>
                 </tr>
             </thead>
             <tbody id="infoHere">
                 <tr *ngFor="let c of myCourses">
-                    <td>{{index + 1}}</td>
+                    <td>{{c.courseid}}</td>
                     <td>{{c.title}}</td>
                     <td>{{c.public_access}}</td>
                     <td>{{c.access_code}}</td>
                     <td>{{c.number_enrolled}}</td>   
-                    <td> <button (click) = "deleteCourse()">Delete</button> </td> 
                 </tr>
             </tbody>
         </table>
         <button (click) = "changeVisibility()" class = "submit"> Add a course</button>
     </div>
+
+    <div id = "editCourse" >
+    <h1 style="text-align: center;">Edit a course</h1>
+        <form>
+            <label>Enter The Course ID:</label>
+            <input [(ngModel)]="id" type="text" name="courseid"/><br>
+            <button (click) = "findCourseById()" class = "submit"> Edit Course</button>
+        </form>
+    </div>
+
+    <div id = "editCourse" style="visibility:visible"> 
+        <form>
+            <label>Title</label>
+            <input [(ngModel)]="getCourse.title" type="text" name="title"/><br>
+            <label>Description</label>
+            <input  [(ngModel)]="getCourse.description" type="text"  name="description"/><br>
+            <label>Public Access</label>
+            <input  [(ngModel)]="getCourse.public_access" type="checkbox"  name="access"/><br>
+            <label>Access Code </label>
+            <input  [(ngModel)]="getCourse.access_code" type="number"  name="accesscode"/><br>
+           
+            <button (click)="editCourse()" class = "submit">Execute Update</button><br><br>
+            <button (click) = "deleteCourse()" class = "submit"> Delete Course</button>
+
+        </form>
+
+    </div>
+
 
     <div id = "courseSubmit" style="visibility:hidden"> 
         <h1 style="text-align: center;">Create a course!</h1>

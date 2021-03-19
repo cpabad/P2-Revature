@@ -12,6 +12,7 @@ import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { EnrollCourseComponent } from './components/enroll-course/enroll-course.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     NavbarComponent,
     CreateLessonComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    EnrollCourseComponent
   ],
   imports: [
     BrowserModule,
