@@ -21,5 +21,6 @@ public interface LessonRepository extends JpaRepository<Lesson, Integer>{
 	void delete(Lesson lesson);
 	Lesson findByLessonid(Integer id);
 	List<Lesson> findAll();
+	List<Lesson> findByCourse(Course course);
 	
 }
