@@ -12,12 +12,12 @@ export class Course{
     description: String;
     date_created: Date;
     public_access: boolean;
-    access_code: number;
+    access_code: String;
     number_enrolled: number;
 
     constructor(courseid: number,title: String,creator: User,
         description: String,date_created: Date,public_access: boolean,
-        access_code: number,number_enrolled: number){
+        access_code: String,number_enrolled: number){
 
             this.courseid = courseid;
             this.title = title;

@@ -1,5 +1,7 @@
 package com.revature.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.revature.model.Course;
 import com.revature.model.Lesson;
 import com.revature.service.LessonService;
 
@@ -26,6 +29,11 @@ public class LessonController {
 	@GetMapping(path = "/view-lesson-by-id", produces = {MediaType.APPLICATION_JSON_VALUE})
 	public Lesson findById(@RequestParam int id) {
 		return this.lessonService.getLessonById(id);
+	}
+	
+	@PostMapping(path = "/view-lesson-by-course", produces = {MediaType.APPLICATION_JSON_VALUE})
+	public List<Lesson> findLessonByCourse(@RequestBody Course course) {
+		return this.lessonService.getLessonsByCourse(course);
 	}
 	
 	@PostMapping(path = "/new", produces = {MediaType.APPLICATION_JSON_VALUE})

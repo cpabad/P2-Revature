@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { CourseComponent } from './components/course/course.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,9 @@ const routes: Routes = [
 },
   {
     path: 'logout', component:LogoutComponent
+  },
+  {
+    path: 'profile', component:ProfileComponent
   },
   {
     path:"course",

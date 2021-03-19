@@ -19,12 +19,24 @@ export class CourseComponent implements OnInit {
   email:String = sessionStorage.getItem('email');
   id:String ="";
 
+  index:number = 0;
   myCourses:Course[]
 
   ngOnInit(): void {
    this.findAllCourseByEmail(this.email);
   }
 
+
+  findAllCourseByUserId(id:number){
+      this.courseService.findAllCourseByUserId(id).subscribe(
+      (data)=>{
+          this.course = data;
+      },
+      () =>{
+        console.log("Something went wrong");
+      }
+    )
+  }
   findAllCourseByEmail(email:String){
     this.courseService.findAllCourseByEmail(email).subscribe(
     (data)=>{

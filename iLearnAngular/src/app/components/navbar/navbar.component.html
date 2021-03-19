@@ -3,7 +3,7 @@
       <h1 class="logo-text"><span>iLearn</span></h1>
     </div>
     <i class="fa fa-bars menu-toggle"></i>
-    <ul class="nav" *ngIf= "isLoggedIn">
+    <ul class="nav" *ngIf= "getIsLoggedIn()">
       <li><a routerLink="/">Home</a></li>
       <li><a routerLink="/Search">Search Courses</a></li>
       <li><a routerLink="/MyCreatedCourses">My Created Courses</a></li>
@@ -13,13 +13,12 @@
 
             <a href="#">
                 <i class="fa fa-user"></i>
-                {{username}}
+                {{username}} 
                 <i class="fa fa-chevron-down" style="font-size: .8em;"></i>
               </a>
               <div class="dropdown-content">
-                  <a routerLink="/Profile" id=profileBtn >Profile</a>
+                  <a routerLink="/profile" id=profileBtn >Profile</a>
                   <a routerLink="/logout">Logout</a>
-      
               </div>
 
         </div>
