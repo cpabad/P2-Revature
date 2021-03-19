@@ -32,10 +32,10 @@ export class LoginComponent implements OnInit {
     this.userService.authenticate(this.email,this.password).subscribe(
       data => {
         console.log(data);
-        sessionStorage.setItem('email', data.email.valueOf())
-        console.log(sessionStorage.getItem('username'))
+        //sessionStorage.setItem('email', data.email.valueOf())
+        console.log(sessionStorage.getItem('email'))
         this.router.navigate([''])
-        this.invalidLogin = false
+        this.invalidLogin= false;
       },
       error => {
         console.log('errrorr!')

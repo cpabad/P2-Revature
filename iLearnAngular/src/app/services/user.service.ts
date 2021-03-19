@@ -8,7 +8,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
-
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -24,18 +24,25 @@ export class UserService {
     let params =  new HttpParams()
           .set('email', email.valueOf())
           .set('password', password.valueOf());
-    return this.httpClient.get<User>('http://localhost:8080/iLearn/validateLogin',{params:params}) as Observable<User>
+    return this.httpClient.get<User>('http://localhost:8080/iLearn/validateLogin',{params:params}).pipe(
+      map(
+        data => {
+          sessionStorage.setItem('email',data.email.valueOf())
+          console.log(data)
+          return data;
+        }
+      )
+    )
        
   }
 
-
-  isLoggedIn(){
-    let user = sessionStorage.getItem('username')
+  isLoggedIn():boolean{
+    let user = sessionStorage.getItem('email')
     return !(user === null)
   }
 
   logout(){
-    sessionStorage.removeItem('username')
+    sessionStorage.removeItem('email')
   }
 
   register(user:User):Observable<User>{

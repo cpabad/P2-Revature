@@ -25,9 +25,9 @@ public class SessionFilter implements Filter {
 //		HttpServletRequest req = (HttpServletRequest) request;
 //		HttpSession session = req.getSession(false);
 //		if(session == null && req.getRequestURI().equals("/iLearn/login")) {
-			chain.doFilter(request, response);
-//		} else if(session != null && (User) session.getAttribute("user") != null) {
 //			chain.doFilter(request, response);
+//		} else if(session != null && (User) session.getAttribute("user") != null) {
+			chain.doFilter(request, response);
 //		} 
 		
 	}
