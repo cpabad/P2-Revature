@@ -25,25 +25,14 @@ public class CommentService {
 		return this.commentRepository.findByCommentid(id);
 	}
 	
-	public List<Comment> findByLesson(Lesson lesson) {
-		return this.commentRepository.findByLesson(lesson);
-	}
 	
-	public List<Comment> findByAuthorAndLesson(User author, Lesson lesson) {
-		return this.commentRepository.findByAuthorAndLesson(author, lesson);
-	}
 	
-//	public List<Comment> findByComment_date(Timestamp date) {
-//		return this.commentRepository.findByComment_date(date);
-//	}
-	
+
 	public List<Comment> findByAuthor(User author) {
 		return this.commentRepository.findByAuthor(author);
 	}
 	
-//	public Comment findByAuthorAndComment_dateAndLesson(User author, Timestamp date, Lesson lesson) {
-//		return this.commentRepository.findByAuthorAndComment_dateAndLesson(author, date, lesson);
-//	}
+
 	
 	public void createComment(Comment comment) {
 		this.commentRepository.save(comment);
