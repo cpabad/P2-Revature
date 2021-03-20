@@ -1,7 +1,10 @@
 package com.revature.controller;
 
+import java.net.URL;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.amazonaws.services.s3.model.S3Object;
 import com.revature.service.S3Service;
 
 @RestController("s3controller")
@@ -23,8 +27,8 @@ public class S3Controller {
 	private S3Service s3Service;
 	
 	@GetMapping("/view")
-	public void viewS3() {
-		System.out.println("bucketName = " + env.getProperty("amazon.bucketName"));
+	public String viewS3() {
+		return "bucketName = " + env.getProperty("amazon.bucketName");
 	}
 	
 	@PostMapping("/new")
@@ -32,8 +36,8 @@ public class S3Controller {
 		return this.s3Service.uploadFile(file);
 	}
 	
-	@PostMapping("/delete")
-	public String deleteFile(@RequestPart String url) {
+	@DeleteMapping("/delete")
+	public String deleteFile(@RequestPart(value = "url") String url) {
 		return this.s3Service.deleteFile(url);
 	}
 

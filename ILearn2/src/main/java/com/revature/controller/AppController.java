@@ -84,9 +84,7 @@ public class AppController {
 	public void addUser(@RequestBody User user) {
 		
 		if(!(user.getEmail().equals("") || user.getUser_password().equals("") || user.getFirst_name().equals("")||user.getLast_name().equals(""))) {
-			if(!this.userService.existsByEmail(user.getEmail())) {
-				this.userService.addUser(user);
-			}
+			this.userService.addUser(user);
 		}
 		
 	}
@@ -104,10 +102,9 @@ public class AppController {
 	}
 	
 	@PostMapping(path = "/enrollCourse")
-	public String enrollCourse(@RequestParam String userid, @RequestParam String courseid) {
-		int tuserid = Integer.parseInt(userid);
-		int tcourseid = Integer.parseInt(courseid);
-		if(this.userService.enrollCourse(tuserid, tcourseid)) {
+	public String enrollCourse(@RequestParam int userid, @RequestParam int courseid) {
+		
+		if(this.userService.enrollCourse(userid, courseid)) {
 			return "Successfully enrolled a course!";
 		}
 		return "This course is not available!";
@@ -133,23 +130,5 @@ public class AppController {
 	@GetMapping(path = "/my-courses")
 	public List<Course> getAllByCreator(@RequestParam String email){
 		return this.courseService.getAllByCreator(email);
-	}
-	
-	@GetMapping(path = "/courseid")
-	public Course getByCourseid(@RequestParam String id){
-		int t = Integer.parseInt(id);
-		return this.courseService.getCourseById(t);
-	}
-	
-	@PostMapping(path = "/updateCourse")
-	public void updateCourse(@RequestBody Course course) {
-		this.courseService.updateCourse(course);
-	}
-	
-	@PostMapping(path = "/deleteCourse")
-	public void deleteCourse(@RequestBody Course course) {
-		User user = userService.getUserById(course.getCreator().getUserid());
-		course.setCreator(user);
-		this.courseService.deleteCourse(course);
 	}
 }

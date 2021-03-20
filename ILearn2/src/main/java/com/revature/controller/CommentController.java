@@ -34,9 +34,14 @@ public class CommentController {
 		return this.commentService.findById(id);
 	}
 	
-	@GetMapping(path = "/view-all-comment", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public List<Comment> findAllComments() {
-		return this.commentService.findAllComments();
+	@GetMapping(path = "/view-comment-by-lesson", produces = {MediaType.APPLICATION_JSON_VALUE}, consumes = {MediaType.APPLICATION_JSON_VALUE})
+	public List<Comment> findByLesson(@RequestBody Lesson lesson) {
+		return this.commentService.findByLesson(lesson);
+	}
+	
+	@GetMapping(path = "/view-comment-by-author-lesson", produces = {MediaType.APPLICATION_JSON_VALUE}, consumes = {MediaType.APPLICATION_JSON_VALUE})
+	public List<Comment> findByAuthorAndLesson(@RequestBody User author, @RequestBody Lesson lesson) {
+		return this.commentService.findByAuthorAndLesson(author, lesson);
 	}
 	
 	@GetMapping(path = "/view-comment-by-author", produces = {MediaType.APPLICATION_JSON_VALUE}, consumes = {MediaType.APPLICATION_JSON_VALUE})
@@ -51,10 +56,7 @@ public class CommentController {
 	
 	@PostMapping(path = "/update", consumes = {MediaType.APPLICATION_JSON_VALUE})
 	public void updateComment(@RequestBody Comment comment) {
-		if(comment.getAuthor()!=null) {
-			this.commentService.updateComment(comment);
-		}
-		
+		this.commentService.updateComment(comment);
 	}
 	
 	@PostMapping(path = "/like")
