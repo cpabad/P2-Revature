@@ -17,4 +17,8 @@ export class CommentService {
 
   }
 
+  getAllComments():Observable<Comment[]>{
+    return this.httpClient.get('http://localhost:8080/comment/view-all-comment') as Observable<Comment[]>
+  }
+
 }
