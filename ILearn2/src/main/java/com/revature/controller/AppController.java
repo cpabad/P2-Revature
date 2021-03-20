@@ -84,7 +84,9 @@ public class AppController {
 	public void addUser(@RequestBody User user) {
 		
 		if(!(user.getEmail().equals("") || user.getUser_password().equals("") || user.getFirst_name().equals("")||user.getLast_name().equals(""))) {
-			this.userService.addUser(user);
+			if(!this.userService.existsByEmail(user.getEmail())) {
+				this.userService.addUser(user);
+			}
 		}
 		
 	}

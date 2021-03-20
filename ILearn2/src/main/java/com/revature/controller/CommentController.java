@@ -34,6 +34,11 @@ public class CommentController {
 		return this.commentService.findById(id);
 	}
 	
+	@GetMapping(path = "/view-all-comment", produces = {MediaType.APPLICATION_JSON_VALUE})
+	public List<Comment> findAllComments() {
+		return this.commentService.findAllComments();
+	}
+	
 	@GetMapping(path = "/view-comment-by-author", produces = {MediaType.APPLICATION_JSON_VALUE}, consumes = {MediaType.APPLICATION_JSON_VALUE})
 	public List<Comment> findByAuthor(@RequestBody User author) {
 		return this.commentService.findByAuthor(author);
@@ -46,7 +51,10 @@ public class CommentController {
 	
 	@PostMapping(path = "/update", consumes = {MediaType.APPLICATION_JSON_VALUE})
 	public void updateComment(@RequestBody Comment comment) {
-		this.commentService.updateComment(comment);
+		if(comment.getAuthor()!=null) {
+			this.commentService.updateComment(comment);
+		}
+		
 	}
 	
 	@PostMapping(path = "/like")

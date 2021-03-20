@@ -25,7 +25,10 @@ public class CommentService {
 		return this.commentRepository.findByCommentid(id);
 	}
 	
-	
+	public List<Comment> findAllComments() {
+		
+		return this.commentRepository.findAll();
+	}
 	
 
 	public List<Comment> findByAuthor(User author) {
