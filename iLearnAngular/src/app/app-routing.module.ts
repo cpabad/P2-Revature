@@ -6,6 +6,7 @@ import { CourseComponent } from './components/course/course.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { EnrollCourseComponent } from './components/enroll-course/enroll-course.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,11 @@ const routes: Routes = [
   {
     path:"course",
     component: CourseComponent
+
+  },
+  {
+    path:"enroll-course",
+    component: EnrollCourseComponent
 
   }
 ];

@@ -102,9 +102,10 @@ public class AppController {
 	}
 	
 	@PostMapping(path = "/enrollCourse")
-	public String enrollCourse(@RequestParam int userid, @RequestParam int courseid) {
-		
-		if(this.userService.enrollCourse(userid, courseid)) {
+	public String enrollCourse(@RequestParam String userid, @RequestParam String courseid) {
+		int tuserid = Integer.parseInt(userid);
+		int tcourseid = Integer.parseInt(courseid);
+		if(this.userService.enrollCourse(tuserid, tcourseid)) {
 			return "Successfully enrolled a course!";
 		}
 		return "This course is not available!";
