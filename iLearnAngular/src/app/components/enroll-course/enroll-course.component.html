@@ -1,18 +1,35 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Enroll Into Course</title>
-</head>
+<header>
+    <h1>My Enrolled Courses</h1>
+</header>
 <body>
 
-     <div id = "enrollForm" style="visibility:visible">
-    <h1 style="text-align: center;">Enroll Into A Course</h1>
-        <form>
-            <label>Enter The Course ID:</label>
-            <input [(ngModel)]="courseid" type="text" name="courseid"/><br>
-            <button (click) = "enrollCourse()" class = "submit"> Enroll</button>
-        </form>
+    <div class="courseList">
+        <div class="courseDisplay" id="courseDisplay">
+            <div class="course">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>#</td>
+                            <td>Title</td>
+                            <td>Creator</td>
+                            <td>Students</td>
+                            <td>Date created</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <thead>
+                        <tr *ngFor="let c of user.enrolled_courses; let i = index">
+                            <td> {{ i+1 }} </td>
+                            <td> <button class="titleBtn">{{c.title}}</button> </td>
+                            <td> {{c.creator.first_name}} {{c.creator.first_name}}</td>
+                            <td> {{c.number_enrolled}} </td>
+                            <td> {{c.date_created}} </td>
+                            <td> <button class="unenrollBtn" (click) = "unenroll(c.courseid)">UnEnroll</button> </td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+        </div>
     </div>
 </body>
-</html>
