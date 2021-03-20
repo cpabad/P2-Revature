@@ -26,7 +26,7 @@ public class S3Controller {
 		System.out.println("bucketName = " + env.getProperty("amazon.bucketName"));
 	}
 	
-	@PostMapping("/uploadFile")
+	@PostMapping("/new")
 	public String uploadFile(@RequestPart(value = "file") MultipartFile file) {
 		return this.s3Service.uploadFile(file);
 	}
