@@ -1,59 +1,103 @@
-input[type=text],[type=number]{
-    width: 65%;
-    padding: 10px 10px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+* {box-sizing: border-box;}
+header{
+    text-align: center;
+    width: 1000px;
+    background-color: rgb(243, 241, 220);
+    margin: auto;
+    border-radius: 0.5em;
+}  
+.courseList{
+    margin: auto;
+    width: 1000px;
+    height:100%;
+}
+
+.courseDisplay {
+    padding: 10px;
+    overflow-y:scroll;
+    overflow-x: scroll;
+    scroll-margin-bottom: 0;
+    height: 500px;
+    background-color:rgb(187, 209, 235);
   }
 
-  input[type=checkbox]{
-    width: 5%;
-    padding: 5px 10px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 9px;
-    box-sizing: border-box;
-  }
+.course{
+    padding: 1px;
+}
 
-  input[type=date]{
-    width: 25%;
-    padding: 5px 10px;
-    margin: 8px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 9px;
-    box-sizing: border-box;
-  }
+span{
+    font-size:small;
+    color: red;
+}
 
-  div {
-    border-radius: 5px;
-    background-color: rgb(242, 242, 242,.8);
-    padding: 20px;
-    
+h2{
+    color: rgb(28, 0, 128);
+}
+
+
+  
+  
+  .searchchbox {
+    display: block;
+    border: 3px solid #f1f1f1;
+
   }
+  
+  
+  .form-container {
+    padding: 10px;
+    background-color: white;
+  }
+  
  
-  label {
-    display: inline-block;
-    width: 150px;
-    text-align: right;
+  .form-container input {
+    width: 100%;
+    padding: 15px;
+    margin:auto;
+    border: none;
+    background: #f1f1f1;
+    resize: none;
+  }
+  
+ 
+  .form-container input:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+ 
+  .form-container .btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
   }
 
   table{
-    border-style: solid;
-    margin-right: auto;
-    margin-left: auto;
-    text-align: center;
-    width: 100%;
+      text-align: left;
+      border-collapse: collapse;
+      margin: auto;
+      width: 100%;
+  }
+  tr{
+      padding: 5px;
+  }
+  td{
+      padding:inherit;
   }
 
-  .submit{
-    height:20px; 
-    width:150px; 
-    margin: -20px -50px; 
-    position:relative;
-    top:50%; 
-    left:50%;
-}
+  .titleBtn{
+      border-style: none;
+      background-color:rgb(187, 209, 235) ;
+  }
+ 
+  .unenrollBtn{
+      background-color: rgb(251, 255, 255);
+      border-radius: 0.5em;
+      border-style: none;
+      color: rgb(12, 12, 12);
+  }

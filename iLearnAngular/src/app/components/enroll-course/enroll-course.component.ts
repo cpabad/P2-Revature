@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { EnrollCourseService } from 'src/app/services/enroll-course.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
+import { CourseServiceService } from 'src/app/services/course-service.service';
+import { Course } from 'src/app/models/course';
 @Component({
   selector: 'app-enroll-course',
   templateUrl: './enroll-course.component.html',
@@ -9,8 +11,9 @@ import { User } from 'src/app/models/user';
 })
 export class EnrollCourseComponent implements OnInit {
 
-  constructor(private enrollService:EnrollCourseService, private userService:UserService) { }
+  constructor(private courseService:CourseServiceService, private userService:UserService) { }
 
+  courses:Course[] = []
   email:String = sessionStorage.getItem('email'); 
   user:User = new User(0,"","","","",[]);
   userid:String = "";
@@ -24,7 +27,7 @@ export class EnrollCourseComponent implements OnInit {
     this.userService.getUser(email).subscribe(
       (data)=>{
         this.user = data;
-        this.userid =this.user.userid.toString();
+        this.userid =data.userid.toString();
         console.log(this.user);
         console.log(this.userid+ "is string");
       },() => {
@@ -33,16 +36,18 @@ export class EnrollCourseComponent implements OnInit {
     )
   }
 
-  enrollCourse(){
+  unenroll(courseid:number){
     console.log(this.userid +" enroll id");
     console.log(this.courseid + " enroll coureseid");
-    this.enrollService.enrollCourse(this.userid,this.courseid).subscribe(
+    this.courseService.unenrollCourse(this.userid.toString(),courseid.toString()).subscribe(
       (data)=>{
           console.log(data);
           console.log(this.userid+" success");
+          window.location.reload();
       },
       () =>{
-        console.log("problem in enroll-course component");
+        console.log("problem in unenroll-course component");
+        window.location.reload();
       }
     )
   }

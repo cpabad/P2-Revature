@@ -64,11 +64,35 @@ public class UserService {
 		Course course = this.courseSevice.getCourseById(courseid);
 		
 		if (user != null && course !=null) {
-			user.getEnrolled_courses().add(course);
-			course.setNumber_enrolled(course.getNumber_enrolled()+1);
-			updateUser(user);
-			this.courseSevice.updateCourse(course);
-			return true;
+			if(user.getEnrolled_courses().add(course)) {  //If this user already enrolled that course, we don't enroll again
+				course.setNumber_enrolled(course.getNumber_enrolled()+1);
+				updateUser(user);
+				this.courseSevice.updateCourse(course);
+				return true;
+			}else {
+				return false;
+			}
+		}else {
+			return false;
+		}
+	}
+	
+	public boolean unenrollCourse(int userid, int courseid) {
+		
+		User user = getUserById(userid);
+		Course course = this.courseSevice.getCourseById(courseid);
+		
+		if (user != null && course !=null) {
+			if(user.getEnrolled_courses().remove(course)) { //If this user didn't enroll that course, we don't need unenroll again.
+				course.setNumber_enrolled(course.getNumber_enrolled()-1);
+				updateUser(user);
+				this.courseSevice.updateCourse(course);
+				return true;
+			}else {
+				return false;
+			}
+			
+			
 		}else {
 			return false;
 		}

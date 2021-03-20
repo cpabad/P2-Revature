@@ -19,7 +19,7 @@
                     </thead>
                     <thead>
                         <tr *ngFor="let c of courses; let i = index">
-                            <td> {{ i }} </td>
+                            <td> {{ i+1 }} </td>
                             <td> <button class="titleBtn">{{c.title}}</button> </td>
                             <td> {{c.creator.first_name}} {{c.creator.first_name}}</td>
                             <td> {{c.number_enrolled}} </td>

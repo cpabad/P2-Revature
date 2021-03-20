@@ -110,7 +110,17 @@ public class AppController {
 		if(this.userService.enrollCourse(tuserid, tcourseid)) {
 			return "Successfully enrolled a course!";
 		}
-		return "This course is not available!";
+		return "You enrolled this course alread or the course is not available now!";
+	}
+	
+	@GetMapping(path = "/unenrollCourse")
+	public String unenrollCourse(@RequestParam String userid, @RequestParam String courseid) {
+		int tuserid = Integer.parseInt(userid);
+		int tcourseid = Integer.parseInt(courseid);
+		if(this.userService.unenrollCourse(tuserid, tcourseid)) {
+			return "Successfully unenrolled a course!";
+		}
+		return "Sorry, you haven't enrolled this course yet!";
 	}
 	
 	@GetMapping(path = "/allCourses")
