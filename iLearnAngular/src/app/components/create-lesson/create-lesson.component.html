@@ -1,10 +1,26 @@
-<div *ngIf="createLessonDiv">
-    <h2>New Lesson</h2>
-    <!-- <h2>New Lesson for the {{lesson.course}} Course</h2> -->
-    <label for="lessonTitle" id="lessonTitleLabel">What is your lesson title?</label>
-    <input type="text" id="lessonTitle"> <br>
-    <!-- <input [(ngModel)]="newLesson.title" type="text" placeholder="Lesson Title" id="lessonTitle"> -->
-    <label for="lessonContent" id="lessonContentLabel">Upload content here:</label>
-    <input type="file" id="lessonContent"> <br>
-    <button id="createLessonButton">Add New Lesson</button>
+<header>
+    <h1>My Create Lesson</h1>
+</header>
+<body>
+<div class = "courseForm" id = "courseForm">
+    <div class = "courseFormDisplay" id = "courseFormDisplay">
+        <form class="form-container">
+        <h1>New Lesson</h1>
+        <label >Lesson Title</label>
+        <input [(ngModel)] =newLesson.title type="text" id="lessontitle"> <br>
+
+        <label >Course ID</label>
+        <input [(ngModel)] =newLesson.title type="number" id="courseid"> <br>
+    
+        <label >Choose a File</label>
+        <input type="file" id="file"> <br>
+
+        <button (click) ="createLesson()" class="btn" id="createLessonButton">Add New Lesson</button>
+
+</form>
+
+    </div>
+    
 </div>
+</body>
+
