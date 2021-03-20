@@ -43,9 +43,11 @@ export class HomepageComponent implements OnInit {
     this.courseService.enrollCourse(this.userid.toString(),courseid.toString()).subscribe(
       (data) => {
         console.log(data)
+        window.location.reload();
       },
       () => {
         console.log("Errrrorr!")
+        window.location.reload();
       }
     )
   }

@@ -28,6 +28,14 @@ export class CourseServiceService {
     return this.httpClient.get('http://localhost:8080/iLearn/enrollCourse', { params: params }) as Observable<String>
   }
 
+  unenrollCourse(userid: String, courseid: String): Observable<String> {
+    console.log("I am here" + userid + " " +courseid)
+    let params = new HttpParams()
+      .set('userid', userid.valueOf())
+      .set('courseid', courseid.valueOf());
+    return this.httpClient.get('http://localhost:8080/iLearn/unenrollCourse', { params: params }) as Observable<String>
+  }
+
   addCourse(course: Course): Observable<Course> {
     return this.httpClient.post<Course>('http://localhost:8080/iLearn/addCourse', course)
   }
