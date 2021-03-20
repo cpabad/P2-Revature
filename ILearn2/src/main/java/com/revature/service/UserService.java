@@ -58,10 +58,6 @@ public class UserService {
 		
 	}
 	
-	public boolean existsByEmail(String email) {
-		return this.userRepository.existsByEmail(email);
-	}
-	
 	public boolean enrollCourse(int userid, int courseid) {
 		
 		User user = getUserById(userid);

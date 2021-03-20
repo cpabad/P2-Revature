@@ -19,6 +19,10 @@ public class Comment {
 	@Column
 	private int commentid;
 	
+	@JoinColumn(name = "lessonid")
+	@ManyToOne
+	private Lesson lesson;
+	
 	@JoinColumn(name = "authorid")
 	@ManyToOne
 	private User author;
@@ -41,10 +45,11 @@ public class Comment {
 	
 	
 
-	public Comment(int commentId, User author, String comment, Timestamp comment_date, int like_counter,
+	public Comment(int commentId, Lesson lesson, User author, String comment, Timestamp comment_date, int like_counter,
 			int dislike_counter) {
 		super();
 		this.commentid = commentId;
+		this.lesson = lesson;
 		this.author = author;
 		this.comment = comment;
 		this.comment_date = comment_date;
@@ -54,9 +59,10 @@ public class Comment {
 
 
 	//Override the constructor without commentId parameter since we use serial type in our table
-	public Comment(User author, String comment, Timestamp comment_date, int like_counter,
+	public Comment(Lesson lesson, User author, String comment, Timestamp comment_date, int like_counter,
 			int dislike_counter) {
 		super();
+		this.lesson = lesson;
 		this.author = author;
 		this.comment = comment;
 		this.comment_date = comment_date;
@@ -75,6 +81,19 @@ public class Comment {
 	public void setCommentid(int commentid) {
 		this.commentid = commentid;
 	}
+
+
+
+	public Lesson getLesson() {
+		return lesson;
+	}
+
+
+
+	public void setLesson(Lesson lesson) {
+		this.lesson = lesson;
+	}
+
 
 
 	public User getAuthor() {
@@ -146,6 +165,7 @@ public class Comment {
 		result = prime * result + ((comment_date == null) ? 0 : comment_date.hashCode());
 		result = prime * result + commentid;
 		result = prime * result + dislike_counter;
+		result = prime * result + ((lesson == null) ? 0 : lesson.hashCode());
 		result = prime * result + like_counter;
 		return result;
 	}
@@ -180,6 +200,11 @@ public class Comment {
 			return false;
 		if (dislike_counter != other.dislike_counter)
 			return false;
+		if (lesson == null) {
+			if (other.lesson != null)
+				return false;
+		} else if (!lesson.equals(other.lesson))
+			return false;
 		if (like_counter != other.like_counter)
 			return false;
 		return true;
@@ -189,11 +214,11 @@ public class Comment {
 
 	@Override
 	public String toString() {
-		return "Comment [commentid=" + commentid + ", author=" + author + ", comment=" + comment + ", comment_date="
-				+ comment_date + ", like_counter=" + like_counter + ", dislike_counter=" + dislike_counter + "]";
+		return "Comment [commentid=" + commentid + ", lesson=" + lesson + ", author=" + author + ", comment=" + comment
+				+ ", comment_date=" + comment_date + ", like_counter=" + like_counter + ", dislike_counter="
+				+ dislike_counter + "]";
 	}
 
-	
 
 	
 	
