@@ -137,7 +137,12 @@ public class AppController {
 	
 	@GetMapping(path = "/courseid")
 	public Course getByCourseid(@RequestParam String id){
-		int t = Integer.parseInt(id);
+		int t = 0;
+		try{
+			t = Integer.parseInt(id);
+		}catch(NumberFormatException e) {
+			System.out.println("Invalid Number Input");
+		}
 		return this.courseService.getCourseById(t);
 	}
 	
