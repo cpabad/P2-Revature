@@ -12,6 +12,7 @@ import com.revature.model.User;
 @Repository(value = "commentRepository")
 public interface CommentRepository extends JpaRepository<Comment, Integer> {
 	
+	List<Comment> findAll();
 	Comment findByCommentid(int id);
 	List<Comment> findByAuthor(User author);
 	<S extends Comment> S save(Comment comment);

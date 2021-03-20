@@ -6,27 +6,11 @@
 <body>
 
     <div class="discussionBoard">
-        <div class="messageDisplay">
-            <div class="comment">
-                <h2>UserName:  <span class="time">11:00</span></h2>    
-                <p>Hello. How are you today?</p>
-            </div>
-
-            <div class="comment">
-                <h2>UserName:<span class="time">11:01</span></h2>
-                <p>Hey! I'm fine. Thanks for asking! </p>
-            </div>
-
-            <div class="comment">
-                <h2>UserName <span class="time">11:02</span> </h2>
-                <p>Sweet! So, what do you wanna do today?</p>
-                
-            </div>
-
-            <div class="comment">
-                <h2>UserName:<span class="time">11:05</span></h2>
-                <p>Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
-                
+        <div class="messageDisplay" id="messageDisplay">
+            <div class="comment" *ngFor="let c of comments">
+                <h2>{{c.author.first_name}} {{c.author.last_name}}:      <span class="time">{{c.comment_date}}</span></h2>    
+                <p>{{c.comment}}</p>
+                <p>-------------------------------------------------------------------</p>
             </div>
 
         </div>
