@@ -1,1 +1,42 @@
-<p>homepage works!</p>
+<header>
+    <h1>All available courses</h1>
+</header>
+<body>
+
+    <div class="courseList">
+        <div class="courseDisplay" id="courseDisplay">
+            <div class="course">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>#</td>
+                            <td>Title</td>
+                            <td>Creator</td>
+                            <td>Students</td>
+                            <td>Date created</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <thead>
+                        <tr *ngFor="let c of courses; let i = index">
+                            <td> {{ i }} </td>
+                            <td> <button class="titleBtn">{{c.title}}</button> </td>
+                            <td> {{c.creator.first_name}} {{c.creator.first_name}}</td>
+                            <td> {{c.number_enrolled}} </td>
+                            <td> {{c.date_created}} </td>
+                            <td> <button class="enrollBtn" (click) = "enroll(c.courseid)">Enroll</button> </td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+
+        </div>
+        <div class="searchbox" id="searchbox">
+            <form action="" class="form-container">
+                <input placeholder="Enter course title...." name="search" required>
+                <button class="btn">Search</button>
+            </form>
+        </div>
+    </div>
+</body>
+
