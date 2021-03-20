@@ -103,7 +103,7 @@ public class AppController {
 		}
 	}
 	
-	@PostMapping(path = "/enrollCourse")
+	@GetMapping(path = "/enrollCourse")
 	public String enrollCourse(@RequestParam String userid, @RequestParam String courseid) {
 		int tuserid = Integer.parseInt(userid);
 		int tcourseid = Integer.parseInt(courseid);

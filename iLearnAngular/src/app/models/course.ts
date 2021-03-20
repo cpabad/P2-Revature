@@ -1,6 +1,4 @@
-/**
- * @author kenny Huang
- */
+
 
 import { User } from "./user";
 

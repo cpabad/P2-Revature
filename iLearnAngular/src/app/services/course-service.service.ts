@@ -1,41 +1,50 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http'
+import { HttpClient, HttpParams } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { Course } from '../models/course';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CourseServiceService {
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
-
-  findAllCourseByEmail(email:String):Observable<Course[]>{
+  findAllCourses(): Observable<Course[]> {
+    return this.httpClient.get('http://localhost:8080/iLearn/allCourses') as Observable<Course[]>
+  }
+  findAllCourseByEmail(email: String): Observable<Course[]> {
     let params = new HttpParams()
-        .set('email', email.valueOf())
-    return this.httpClient.get('http://localhost:8080/iLearn/my-courses',{params:params})as Observable<Course[]>;
+      .set('email', email.valueOf())
+    return this.httpClient.get('http://localhost:8080/iLearn/my-courses', { params: params }) as Observable<Course[]>;
 
-}
-
-
-  addCourse(course:Course):Observable<Course>{
-      return this.httpClient.post<Course>('http://localhost:8080/iLearn/addCourse',course)
+  }
+  enrollCourse(userid: String, courseid: String): Observable<String> {
+    console.log("I am here" + userid + " " +courseid)
+    let params = new HttpParams()
+      .set('userid', userid.valueOf())
+      .set('courseid', courseid.valueOf());
+    return this.httpClient.get('http://localhost:8080/iLearn/enrollCourse', { params: params }) as Observable<String>
   }
 
-  findCourseById(id:String):Observable<Course>{
-      let params = new HttpParams()
-          .set('id',id.valueOf())
-    return this.httpClient.get('http://localhost:8080/iLearn/courseid',{params:params}) as Observable<Course>;
-}
-
-  editCourse(course:Course):Observable<Course>{
-    return this.httpClient.post<Course>('http://localhost:8080/iLearn/updateCourse',course)
+  addCourse(course: Course): Observable<Course> {
+    return this.httpClient.post<Course>('http://localhost:8080/iLearn/addCourse', course)
   }
 
-  deleteCourse(course:Course):Observable<Course>{
-    return this.httpClient.post<Course>('http://localhost:8080/iLearn/deleteCourse',course)
-}
+  findCourseById(id: String): Observable<Course> {
+    let params = new HttpParams()
+      .set('id', id.valueOf())
+    return this.httpClient.get('http://localhost:8080/iLearn/courseid', { params: params }) as Observable<Course>;
+  }
+
+  editCourse(course: Course): Observable<Course> {
+    return this.httpClient.post<Course>('http://localhost:8080/iLearn/updateCourse', course)
+  }
+
+  deleteCourse(course: Course): Observable<Course> {
+    return this.httpClient.post<Course>('http://localhost:8080/iLearn/deleteCourse', course)
+  }
 
 }
 
