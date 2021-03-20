@@ -1,0 +1,44 @@
+<head>
+</head>
+<header>
+    <h1>Discussion Board</h1>
+</header>
+<body>
+
+    <div class="discussionBoard">
+        <div class="messageDisplay">
+            <div class="comment">
+                <h2>UserName:  <span class="time">11:00</span></h2>    
+                <p>Hello. How are you today?</p>
+            </div>
+
+            <div class="comment">
+                <h2>UserName:<span class="time">11:01</span></h2>
+                <p>Hey! I'm fine. Thanks for asking! </p>
+            </div>
+
+            <div class="comment">
+                <h2>UserName <span class="time">11:02</span> </h2>
+                <p>Sweet! So, what do you wanna do today?</p>
+                
+            </div>
+
+            <div class="comment">
+                <h2>UserName:<span class="time">11:05</span></h2>
+                <p>Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
+                
+            </div>
+
+        </div>
+        <div class="postbox" id="postbox">
+            <form action="" class="form-container">
+                <textarea [(ngModel)] = "comment.comment" placeholder="{{text}}" name="comment" required></textarea>
+                <button (click) = 'makeComment()' class="btn">Post Comment</button>
+            </form>
+        </div>
+    </div>
+
+
+
+
+</body>
