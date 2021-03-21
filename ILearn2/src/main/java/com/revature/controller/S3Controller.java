@@ -4,6 +4,9 @@ import java.net.URL;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,9 +36,9 @@ public class S3Controller {
 		return "bucketName = " + env.getProperty("amazon.bucketName");
 	}
 	
-	@PostMapping("/new")
-	public String uploadFile(@RequestPart(value = "file") MultipartFile file) {
-		return this.s3Service.uploadFile(file);
+	@PostMapping(path = "/new", produces = {MediaType.TEXT_PLAIN_VALUE})
+	public ResponseEntity<String> uploadFile(@RequestPart(value = "file") MultipartFile file) {
+		return ResponseEntity.status(HttpStatus.OK).body(this.s3Service.uploadFile(file));
 	}
 	
 	@DeleteMapping("/delete")

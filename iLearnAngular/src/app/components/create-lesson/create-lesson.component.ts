@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Course } from 'src/app/models/course';
 import { Lesson } from 'src/app/models/lesson';
 import { User } from 'src/app/models/user';
@@ -12,10 +13,13 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class CreateLessonComponent implements OnInit {
 
-  constructor(private lessonService:LessonService, private userService:UserService) { }
+  constructor(private lessonService:LessonService, private userService:UserService, private formBuilder:FormBuilder) { }
 
   ngOnInit(): void {
     this.getloggedInUser(this.email);
+    this.lessonForm = this.formBuilder.group({
+      profile: ['']
+    })
   }
   lessons:Lesson[];
   email:String = sessionStorage.getItem('email');
@@ -24,9 +28,11 @@ export class CreateLessonComponent implements OnInit {
   courseWithNewLesson:Course = new Course(0, '', this.creator, '', new Date(),true,'',0);
   newLesson: Lesson = new Lesson(0, "", 0, "");
   createLessonDiv:boolean = true; //Change to false so I can hover over a course and add it
+  formData:FormData = new FormData();
 
   //formData.set(name, value, filename);
-  formData:FormData = new FormData();
+
+  lessonForm:FormGroup;
 
   createLesson(){
     this.lessonService.createLesson(this.newLesson).subscribe(
@@ -40,10 +46,22 @@ export class CreateLessonComponent implements OnInit {
     )
   }
 
+  onFileSelect(arg){
+    if(arg.target.files.length > 0) {
+      const file = arg.target.files[0];
+      this.lessonForm.get('profile').setValue(file);
+    }
+  }
+
   createObject(){
+    this.formData.append('file', this.lessonForm.get('profile').value);
     this.lessonService.createObject(this.formData).subscribe(
-      (data)=>{
-        console.log(data)
+      ()=>{
+        // console.log(data);
+        // console.log(this.newLesson);
+        // this.newLesson.file_location = data;
+        // console.log(this.newLesson);
+        // this.createLesson();
       },
       () => {
         console.log('Something went wrong!')
