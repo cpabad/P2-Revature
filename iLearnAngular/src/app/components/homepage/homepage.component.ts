@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from 'src/app/models/course';
+import { Lesson } from 'src/app/models/lesson';
 import { User } from 'src/app/models/user';
 import { CourseServiceService } from 'src/app/services/course-service.service';
+import { LessonService } from 'src/app/services/lesson.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -11,9 +13,10 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor(private courseService:CourseServiceService, private userService: UserService) { }
+  constructor(private courseService:CourseServiceService, private userService: UserService,private LessonSevice:LessonService) { }
 
   courses:Course[] = []
+  lessons:Lesson[] =[]
   email:String = sessionStorage.getItem('email'); 
   user:User = new User(0,"","","","",[]);
   userid:String="";
@@ -66,6 +69,20 @@ export class HomepageComponent implements OnInit {
     )
   }
 
+  findAllLessons(courseid:number){
+    this.LessonSevice.findAllLessonsByCourseid(courseid.toString()).subscribe(
+      (data) => {
+        this.lessons = data
+        console.log(data)
+      },
+      () =>{
+        console.log("Errrrorrr!")
+      }
+
+    )
+
+  }
+
   isSame(creator:number):boolean{
     if(this.user.userid === creator){
       return true
@@ -75,7 +92,8 @@ export class HomepageComponent implements OnInit {
   }
 
   viewContent(id:String){
-    var courseid:number = +id;
+     var courseid:number = +id;
+     this.findAllLessons(courseid)
      var myid:string = "form-container" +id
      var doc = document.getElementById(myid);
      if (doc.style.display==='none'){

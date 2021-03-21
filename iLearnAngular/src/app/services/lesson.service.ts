@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -32,5 +32,12 @@ export class LessonService {
 
   updateLesson(lesson:Lesson):Observable<Lesson>{
     return this.httpClient.post<Lesson>('http://localhost:8080/lesson/update', lesson)
+  }
+  //get a course all of it's lessons 
+  findAllLessonsByCourseid(courseid: String): Observable<Lesson[]> {
+    let params = new HttpParams()
+      .set('courseid', courseid.valueOf())
+    return this.httpClient.get('http://localhost:8080/lesson/allLessonsByCourse', { params: params }) as Observable<Lesson[]>;
+
   }
 }

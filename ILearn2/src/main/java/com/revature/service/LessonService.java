@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.revature.model.Course;
 import com.revature.model.Lesson;
+import com.revature.model.User;
 import com.revature.repository.LessonRepository;
 
 @Service(value = "lessonService")
@@ -14,6 +15,9 @@ public class LessonService {
 	
 	@Autowired
 	private LessonRepository lessonRepository;
+	
+	@Autowired
+	private CourseService courseService;
 	
 	public void addLesson(Lesson lesson) {
 		this.lessonRepository.save(lesson);
@@ -37,5 +41,15 @@ public class LessonService {
 	
 	public List<Lesson> getLessonsByCourse(Course course) {
 		return this.lessonRepository.findByCourse(course);
+	}
+	
+	//Use couseid as parameter to find all lessons of a course
+	public List<Lesson> getAllByCourse(int courseid){
+		Course course = this.courseService.getCourseById(courseid);		
+		if(course!=null) {
+			return this.lessonRepository.findByCourse(course);
+		} else {
+			return null;
+		}
 	}
 }
