@@ -162,9 +162,13 @@ public class AppController {
 	}
 	
 	@PostMapping(path = "/deleteCourse")
-	public void deleteCourse(@RequestBody Course course) {
-		User user = userService.getUserById(course.getCreator().getUserid());
-		course.setCreator(user);
-		this.courseService.deleteCourse(course);
+	public String deleteCourse(@RequestBody Course course) {
+		if(this.courseService.existsByCourseid(course.getCourseid())) {
+			this.courseService.deleteCourse(course);
+			return course.getCourseid() + " Successfully deleted this course " + course; 
+		}else {
+			return  course.getCourseid() + " This course doesn't not exist!!! " + course;
+		}
+		
 	}
 }

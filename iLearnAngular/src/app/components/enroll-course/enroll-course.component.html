@@ -17,16 +17,16 @@
                             <td></td>
                         </tr>
                     </thead>
-                    <thead>
+                    <tbody>
                         <tr *ngFor="let c of user.enrolled_courses; let i = index">
                             <td> {{ i+1 }} </td>
                             <td> <button class="titleBtn">{{c.title}}</button> </td>
-                            <td> {{c.creator.first_name}} {{c.creator.first_name}}</td>
+                            <td> {{c.creator.first_name}} {{c.creator.last_name}}</td>
                             <td> {{c.number_enrolled}} </td>
                             <td> {{c.date_created}} </td>
                             <td> <button class="unenrollBtn" (click) = "unenroll(c.courseid)">UnEnroll</button> </td>
                         </tr>
-                    </thead>
+                    </tbody>
                 </table>
             </div>
 
