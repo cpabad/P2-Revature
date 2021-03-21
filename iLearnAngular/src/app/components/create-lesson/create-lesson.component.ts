@@ -15,19 +15,34 @@ export class CreateLessonComponent implements OnInit {
   constructor(private lessonService:LessonService, private userService:UserService) { }
 
   ngOnInit(): void {
-    this.viewLessonsByCourse()
+    this.getloggedInUser(this.email);
   }
   lessons:Lesson[];
   email:String = sessionStorage.getItem('email');
   user:User = new User(0,"","","","",[]);
   creator:User = new User(0, '', '', '', '', []);
   courseWithNewLesson:Course = new Course(0, '', this.creator, '', new Date(),true,'',0);
-  newLesson: Lesson = new Lesson(0, '', this.courseWithNewLesson, "");
+  newLesson: Lesson = new Lesson(0, "", 0, "");
   createLessonDiv:boolean = true; //Change to false so I can hover over a course and add it
+
+  //formData.set(name, value, filename);
+  formData:FormData = new FormData();
 
   createLesson(){
     this.lessonService.createLesson(this.newLesson).subscribe(
       (data) => {
+        console.log(data)
+
+      },
+      () => {
+        console.log('Something went wrong!')
+      }
+    )
+  }
+
+  createObject(){
+    this.lessonService.createObject(this.formData).subscribe(
+      (data)=>{
         console.log(data)
       },
       () => {
@@ -40,6 +55,7 @@ export class CreateLessonComponent implements OnInit {
     this.userService.getUser(email).subscribe(
       (data)=>{
         this.user = data;
+        console.log(this.user);
       },() => {
               console.log("Something went wrong");
         }
