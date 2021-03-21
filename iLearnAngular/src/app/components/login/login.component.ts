@@ -37,7 +37,8 @@ export class LoginComponent implements OnInit {
       },
       error => {
         console.log('errrorr!')
-        this.invalidLogin = true
+        this.invalidLogin = true;
+        alert("Wrong Email/Password Combination");
       }
 
     )
