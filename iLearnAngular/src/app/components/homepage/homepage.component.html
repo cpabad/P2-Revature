@@ -18,15 +18,15 @@
                         </tr>
                     </thead>
                     <tbody *ngFor="let c of courses; let i = index">
-                        <tr>
+                        <tr *ngIf= "c.public_access">
                             <td> {{ i+1 }} </td>
                             <td> <button (click) = "viewContent(c.courseid)" class="titleBtn">{{c.title}}</button> </td>
                             <td> {{c.creator.first_name}} {{c.creator.last_name}}</td>
                             <td> {{c.number_enrolled}} </td>
                             <td> {{c.date_created}} </td>
-                            <td> <button class="enrollBtn" (click) = "enroll(c.courseid)">Enroll</button> </td>
+                            <td> <button *ngIf = (!isSame(c.creator.userid)) class="enrollBtn" (click) = "enroll(c.courseid)">Enroll</button> </td>
                         </tr>
-                        <tr >
+                        <tr>
                             <th colspan="6">
                                 <div class="form-container" id = "form-container{{c.courseid}}" style="display: none;">
                                     <div > 

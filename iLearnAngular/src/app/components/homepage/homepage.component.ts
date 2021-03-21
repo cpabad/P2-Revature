@@ -44,11 +44,11 @@ export class HomepageComponent implements OnInit {
     this.courseService.enrollCourse(this.userid.toString(),courseid.toString()).subscribe(
       (data) => {
         console.log(data)
-        window.location.reload();
+
       },
       () => {
         console.log("Errrrorr!")
-        window.location.reload();
+       
       }
     )
   }
@@ -64,6 +64,14 @@ export class HomepageComponent implements OnInit {
       }
 
     )
+  }
+
+  isSame(creator:number):boolean{
+    if(this.user.userid === creator){
+      return true
+    }else{
+      return false
+    }
   }
 
   viewContent(id:String){
