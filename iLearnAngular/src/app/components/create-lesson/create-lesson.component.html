@@ -12,13 +12,12 @@
         <input [(ngModel)] ="newLesson.title" type="text" id="lessontitle" name="lessontitle"> <br>
 
         <label >Course ID</label>
-        <input [(ngModel)] ="newLesson.courseid" type="number" id="courseid" name="lessontitle"> <br>
-        <button (click) ="createLesson()" class="btn" id="createLessonButton">Add New Lesson</button>
+        <input [(ngModel)] ="newLesson.courseid" type="number" id="courseid" name="courseid"> <br>
 
 </form>
-<form class="form-container" action = "s3/new" method="post" enctype="multipart/form-data">
+<form [formGroup]="lessonForm" (ngSubmit)="createObject()" class="form-container">
         <label >Choose a File</label>
-        <input type="file" id="file" name="file"> <br>
+        <input (change)="onFileSelect($event)" type="file" id="file" name="file"> <br>
          <button type="submit" class="btn" id="createLessonButton">Upload File</button>
 </form>
        

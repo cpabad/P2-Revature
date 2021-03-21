@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Course } from '../models/course';
 import { Lesson } from '../models/lesson';
@@ -21,8 +22,8 @@ export class LessonService {
     return this.httpClient.post<Lesson>('http://localhost:8080/lesson/new', lesson)
   }
   
-  createObject(form:FormData):Observable<FormData>{
-    return this.httpClient.post<FormData>('http://localhost:8080/s3/new', form)
+  createObject(form:FormData):Observable<String>{
+    return this.httpClient.post<String>('http://localhost:8080/s3/new', form)
   }
 
   deleteLesson(lesson:Lesson):Observable<Lesson>{

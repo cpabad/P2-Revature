@@ -9,13 +9,14 @@ import { LessonComponent } from './components/lesson/lesson.component';
 import { CourseComponent } from './components/course/course.component';
 import { CreateLessonComponent } from './components/create-lesson/create-lesson.component';
 import { LoginComponent } from './components/login/login.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LogoutComponent } from './components/logout/logout.component';
+<<<<<<< HEAD
 import { EnrollCourseComponent } from './components/enroll-course/enroll-course.component';
+=======
 import { ProfileComponent } from './components/profile/profile.component';
-import { DiscussionBoardComponent } from './components/discussion-board/discussion-board.component';
-import { TestComponent } from './components/test/test.component';
+>>>>>>> 5b6fd11ad37bb5c11245809215e6f36e48e90982
 
 @NgModule({
   declarations: [
@@ -27,18 +28,18 @@ import { TestComponent } from './components/test/test.component';
     CreateLessonComponent,
     LoginComponent,
     LogoutComponent,
-    EnrollCourseComponent,
-	ProfileComponent,
-	DiscussionBoardComponent,
-	TestComponent
+<<<<<<< HEAD
+    EnrollCourseComponent
+=======
+    ProfileComponent
+>>>>>>> 5b6fd11ad37bb5c11245809215e6f36e48e90982
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    HttpClientModule,
-    ReactiveFormsModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
