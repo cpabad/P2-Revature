@@ -4,6 +4,7 @@ import java.net.URL;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,7 @@ import com.revature.service.S3Service;
 
 @RestController("s3controller")
 @RequestMapping(path = "/s3")
+@CrossOrigin()
 public class S3Controller {
 	
 	@Autowired

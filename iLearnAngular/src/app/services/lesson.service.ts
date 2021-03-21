@@ -20,6 +20,9 @@ export class LessonService {
   createLesson(lesson:Lesson):Observable<Lesson>{
     return this.httpClient.post<Lesson>('http://localhost:8080/lesson/new', lesson)
   }
+  createObject(form:FormData):Observable<FormData>{
+    return this.httpClient.post<FormData>('http://localhost:8080/lesson/new', form)
+  }
 
   deleteLesson(lesson:Lesson):Observable<Lesson>{
     return this.httpClient.post<Lesson>('http://localhost:8080/lesson/delete', lesson)

@@ -84,12 +84,12 @@ public class AppController {
 	public void addUser(@RequestBody User user) {
 		
 		if(!(user.getEmail().equals("") || user.getUser_password().equals("") || user.getFirst_name().equals("")||user.getLast_name().equals(""))) {
-			if(!this.userService.existsByEmail(user.getEmail())) {
+		//	if(!this.userService.existsByEmail(user.getEmail())) {
 				this.userService.addUser(user);
 			}
 		}
 		
-	}
+	//}
 	
 	@PostMapping(path = "/updateUser",consumes = {MediaType.APPLICATION_JSON_VALUE})
 	public String updateUser(@RequestBody User user) {
