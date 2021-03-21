@@ -34,7 +34,7 @@ const routes: Routes = [
     path: 'profile', component:ProfileComponent
   },
   {
-    path: 'test', component:TestComponent
+    path: 'createCourse', component:TestComponent
   },
   {
     path: 'discussionBoard', component:DiscussionBoardComponent

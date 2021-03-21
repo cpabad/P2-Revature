@@ -53,4 +53,10 @@ public class LessonController {
 		this.lessonService.updateLesson(lesson);
 	}
 	
+	//Endpoint for find a course all of its lessons
+	@GetMapping(path = "/allLessonsByCourse")
+	public List<Lesson> getAllCoursesByCreator(@RequestParam String courseid){
+		int intCourseid = Integer.parseInt(courseid);
+		return this.lessonService.getAllByCourse(intCourseid);
+	}
 }
