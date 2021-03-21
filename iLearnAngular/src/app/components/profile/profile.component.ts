@@ -21,16 +21,15 @@ export class ProfileComponent implements OnInit {
   }
 
   update(){
-
       this.userService.updateProfile(this.loggedInUser).subscribe(
-        (data) =>{
+        (data)=>{
           console.log(data)
+          alert("Successfully Updated Profile!");
         },
         ()=>{
           console.log('Errorrrrr!')
         }
       )
-
   }
 
   getloggedInUser(email:String){
