@@ -19,6 +19,7 @@ export class HomepageComponent implements OnInit {
   userid:String="";
   courseid:String=""; 
 
+
   ngOnInit(): void {
     
     this.findAllCourses();
@@ -64,5 +65,17 @@ export class HomepageComponent implements OnInit {
 
     )
   }
+
+  viewContent(id:String){
+    var courseid:number = +id;
+     var myid:string = "form-container" +id
+     var doc = document.getElementById(myid);
+     if (doc.style.display==='none'){
+       doc.style.display='block';
+     } else{
+       doc.style.display='none';
+     }
+  }
+  
 
 }
