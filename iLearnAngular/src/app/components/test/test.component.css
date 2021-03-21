@@ -52,7 +52,7 @@ h2{
   }
   
  
-  .editForm input {
+  .editForm input,textarea {
     width: 100%;
     padding: 15px;
     margin:auto;
@@ -60,6 +60,8 @@ h2{
     background: #f1f1f1;
     resize: none;
   }
+
+
   
  
   .editForm input:focus {

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { EnrollCourseService } from 'src/app/services/enroll-course.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
 import { CourseServiceService } from 'src/app/services/course-service.service';
 import { Course } from 'src/app/models/course';
+import { Lesson } from 'src/app/models/lesson';
+import { LessonService } from 'src/app/services/lesson.service';
 @Component({
   selector: 'app-enroll-course',
   templateUrl: './enroll-course.component.html',
@@ -11,9 +12,10 @@ import { Course } from 'src/app/models/course';
 })
 export class EnrollCourseComponent implements OnInit {
 
-  constructor(private courseService:CourseServiceService, private userService:UserService) { }
+  constructor(private courseService:CourseServiceService, private userService:UserService,private LessonSevice:LessonService) { }
 
   courses:Course[] = []
+  lessons:Lesson[] =[]
   email:String = sessionStorage.getItem('email'); 
   user:User = new User(0,"","","","",[]);
   userid:String = "";
@@ -36,8 +38,12 @@ export class EnrollCourseComponent implements OnInit {
     )
   }
 
+  
+ 
+
   viewContent(id:String){
     var courseid:number = +id;
+    this.findAllLessons(courseid)
      var myid:string = "form-container" +id
      var doc = document.getElementById(myid);
      if (doc.style.display==='none'){
@@ -47,6 +53,19 @@ export class EnrollCourseComponent implements OnInit {
      }
   }
   
+  findAllLessons(courseid:number){
+    this.LessonSevice.findAllLessonsByCourseid(courseid.toString()).subscribe(
+      (data) => {
+        this.lessons = data
+        console.log(data)
+      },
+      () =>{
+        console.log("Errrrorrr!")
+      }
+
+    )
+
+  }
 
 
   unenroll(courseid:number){
