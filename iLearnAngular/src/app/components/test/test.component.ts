@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from 'src/app/models/course';
+import { Lesson } from 'src/app/models/lesson';
 import { User } from 'src/app/models/user';
 import { CourseServiceService } from 'src/app/services/course-service.service';
+import { LessonService } from 'src/app/services/lesson.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -11,16 +13,19 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class TestComponent implements OnInit {
 
-  constructor(private courseService:CourseServiceService, private userService:UserService) { }
+  constructor(private courseService:CourseServiceService, private userService:UserService,private LessonSevice:LessonService) { }
 
   course:Course[] = [];
+  lessons:Lesson[] =[]
   email:String = sessionStorage.getItem('email');
   user:User = new User(0,"","","","",[]);
-  visibility:boolean = true;
+  visibility:boolean = false;
+  showNewLessonForm:boolean=false;
 
   newCourse:Course = new Course(0,"",this.user,"",new Date(),true,'',0);
   getCourse:Course = new Course(0,"",this.user,"",new Date(),true,'',0);
   emptyCourse:Course = new Course(0,"",this.user,"",new Date(),true,'',0);
+  newLesson: Lesson = new Lesson(0, "", 0, "");
 
   myCourses:Course[]
 
@@ -38,6 +43,20 @@ export class TestComponent implements OnInit {
               console.log("Something went wrong");
         }
     )
+  }
+
+  findAllLessons(courseid:number){
+    this.LessonSevice.findAllLessonsByCourseid(courseid.toString()).subscribe(
+      (data) => {
+        this.lessons = data
+        console.log(data)
+      },
+      () =>{
+        console.log("Errrrorrr!")
+      }
+
+    )
+
   }
  
   findAllCourseByEmail(email:String){
@@ -109,14 +128,22 @@ export class TestComponent implements OnInit {
     )
   }
 
+
+  showAddLessonForm(courseid:number){
+    this.getCourse.courseid = courseid
+    this.showNewLessonForm = !this.showNewLessonForm
+  }
+
   
 
   changeCourseVisibility(){
     this.visibility = !this.visibility
   }
+
   changeEditCourseVisibility(id:String){
    var courseid:number = +id;
     this.findCourseById(courseid)
+    this.findAllLessons(courseid)
     var myid:string = "editForm" +id
     var doc = document.getElementById(myid);
     if (doc.style.display==='none'){
