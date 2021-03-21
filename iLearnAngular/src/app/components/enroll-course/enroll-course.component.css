@@ -48,6 +48,21 @@ h2{
     padding: 10px;
     background-color: white;
   }
+
+  .form-container textarea {
+    width: 100%;
+    padding: 15px;
+    margin:auto;
+    border: none;
+    background: #f1f1f1;
+    resize: none;
+    min-height: 100px;
+    color: blue;
+  }
+
+  .courseContent li{
+    color: blue;
+  }
   
  
   .form-container input {

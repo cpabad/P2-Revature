@@ -36,6 +36,19 @@ export class EnrollCourseComponent implements OnInit {
     )
   }
 
+  viewContent(id:String){
+    var courseid:number = +id;
+     var myid:string = "form-container" +id
+     var doc = document.getElementById(myid);
+     if (doc.style.display==='none'){
+       doc.style.display='block';
+     } else{
+       doc.style.display='none';
+     }
+  }
+  
+
+
   unenroll(courseid:number){
     console.log(this.userid +" enroll id");
     console.log(this.courseid + " enroll coureseid");
