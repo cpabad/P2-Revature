@@ -60,6 +60,7 @@ export class CourseComponent implements OnInit {
       (data)=>{
         console.log(data+"course");
         window.location.reload();
+        alert("Successfully Added Course!");
       },
       () =>{
         console.log("error in course component")
@@ -82,8 +83,9 @@ export class CourseComponent implements OnInit {
   editCourse(){
     this.courseService.editCourse(this.getCourse).subscribe(
       (data)=>{
-        console.log(data);
+        console.log(data); 
         window.location.reload();
+        alert("Successfully Edited Course!");
       },
       () =>{
         console.log("error in course component")
@@ -96,6 +98,7 @@ export class CourseComponent implements OnInit {
       (data)=>{
         console.log(data);
         window.location.reload();
+        alert("Successfully Deleted Course!");
       },
       () =>{
         console.log("error in course component")
