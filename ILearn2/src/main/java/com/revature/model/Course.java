@@ -23,7 +23,7 @@ public class Course {
 	private String title;
 	
 	@JoinColumn(name = "creator")
-	@ManyToOne
+	@ManyToOne()
 	private User creator;
 	
 	@Column

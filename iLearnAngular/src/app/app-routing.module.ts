@@ -10,6 +10,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { EnrollCourseComponent } from './components/enroll-course/enroll-course.component';
 
 import { DiscussionBoardComponent } from './components/discussion-board/discussion-board.component';
+import { TestComponent } from './components/test/test.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,9 @@ const routes: Routes = [
   },
   {
     path: 'profile', component:ProfileComponent
+  },
+  {
+    path: 'test', component:TestComponent
   },
   {
     path: 'discussionBoard', component:DiscussionBoardComponent

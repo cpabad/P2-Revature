@@ -27,6 +27,8 @@ public interface CourseRepository extends JpaRepository<Course, Integer> {
 	
 	List<Course> findAll();
 	
+	boolean existsByCourseid(int id);
+	
 	List<Course> findByCreator(User user);
 
 }

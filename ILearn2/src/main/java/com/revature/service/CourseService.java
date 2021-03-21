@@ -64,6 +64,10 @@ public class CourseService {
 		
 	}
 	
+	public boolean existsByCourseid(int id) {
+		return this.courseRepository.existsByCourseid(id);
+	}
+	
 	public List<Course> getAllByCreator(String email){
 		
 		User user = this.userService.getUserByEmail(email);		
