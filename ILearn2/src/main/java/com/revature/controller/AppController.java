@@ -92,15 +92,8 @@ public class AppController {
 	}
 	
 	@PostMapping(path = "/updateUser",consumes = {MediaType.APPLICATION_JSON_VALUE})
-	public String updateUser(@RequestBody User user) {
-		
-		User existedUser = this.userService.getUserById(user.getUserid());
-		if(existedUser != null) {
-		this.userService.updateUser(user);
-		return "Updated successfully";
-		}else {
-			return "No such user exist";
-		}
+	public void updateUser(@RequestBody User user) {
+		this.userService.getUserById(user.getUserid());	
 	}
 	
 	@GetMapping(path = "/enrollCourse")

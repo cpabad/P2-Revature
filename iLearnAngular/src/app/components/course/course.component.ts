@@ -98,7 +98,7 @@ export class CourseComponent implements OnInit {
       (data)=>{
         console.log(data);
         window.location.reload();
-        alert("Successfully Deleted Course!");
+        alert("Successfully Deleted Course!",);
       },
       () =>{
         console.log("error in course component")
