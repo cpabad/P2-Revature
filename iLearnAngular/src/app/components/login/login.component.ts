@@ -48,6 +48,7 @@ export class LoginComponent implements OnInit {
     this.userService.register(this.newUser).subscribe(
       (data) =>{
         console.log(data)
+        alert("Successfully Registered");
       },
       ()=>{
         console.log('Errorrrrr!')
