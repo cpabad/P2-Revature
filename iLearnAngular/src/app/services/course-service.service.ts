@@ -21,7 +21,6 @@ export class CourseServiceService {
 
   }
   enrollCourse(userid: String, courseid: String): Observable<String> {
-    console.log("I am here" + userid + " " +courseid)
     let params = new HttpParams()
       .set('userid', userid.valueOf())
       .set('courseid', courseid.valueOf());
@@ -29,7 +28,6 @@ export class CourseServiceService {
   }
 
   unenrollCourse(userid: String, courseid: String): Observable<String> {
-    console.log("I am here" + userid + " " +courseid)
     let params = new HttpParams()
       .set('userid', userid.valueOf())
       .set('courseid', courseid.valueOf());

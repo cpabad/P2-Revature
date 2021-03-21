@@ -15,6 +15,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { EnrollCourseComponent } from './components/enroll-course/enroll-course.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { DiscussionBoardComponent } from './components/discussion-board/discussion-board.component';
+import { TestComponent } from './components/test/test.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { DiscussionBoardComponent } from './components/discussion-board/discussi
     LogoutComponent,
     EnrollCourseComponent,
 	ProfileComponent,
-	DiscussionBoardComponent
+	DiscussionBoardComponent,
+	TestComponent
   ],
   imports: [
     BrowserModule,

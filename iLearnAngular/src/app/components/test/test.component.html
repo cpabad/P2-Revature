@@ -1,0 +1,70 @@
+<header>
+    <h1>My Created Courses</h1>
+</header>
+<body>
+
+    <div class="courseList">
+        <div class="courseDisplay" id="courseDisplay">
+            <div class="course">
+                <table>
+                    <thead>
+                        <tr>
+                            <td>#</td>
+                            <td>Title</td>
+                            <td>Public Access</td>
+                            <td>Access Code</td>
+                            <td>Students</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let c of myCourses; let i = index">
+                        <tr>
+                            <td> {{i + 1}}  </td>
+                            <td> <button (click) = "changeEditCourseVisibility(c.courseid)" class="titleBtn"> {{c.title}} </button> </td>
+                            <td>{{c.public_access}}</td>
+                            <td>{{c.access_code}}</td>
+                            <td>{{c.number_enrolled}}</td>
+                            <td> <button (click)="deleteCourse(c.courseid)" class="deteleBtn">Delete</button> </td>
+                        </tr>
+                        <tr >
+                            <th colspan="6">
+                                <div class="editForm" id = "editForm{{c.courseid}}" style="display:none"> 
+                                    <form>
+                                        <label>Title</label>
+                                        <input [(ngModel)]="getCourse.title" type="text" name="title"/><br>
+                                        <label>Description</label>
+                                        <input  [(ngModel)]="getCourse.description" type="text"  name="description"/><br>
+                                        <label>Public Access</label>
+                                        <input  [(ngModel)]="getCourse.public_access" type="checkbox"  name="access"/><br>
+                                        <label>Access Code </label>
+                                        <input  [(ngModel)]="getCourse.access_code" type="text"  name="accesscode"/><br>
+                        
+                                        <button (click) = "editCourse(c.courseid)" class = "submit">Execute Update</button>
+                                    </form>
+                            
+                                </div>
+                            </th> 
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <button class="displayForm" (click) = "changeCourseVisibility()">Create New Course</button>
+        <div class="courseDisplay" id = "courseSubmit"> 
+            <form class = "editForm" [hidden] = "visibility">
+                <label>Title</label>
+                <input [(ngModel)]="newCourse.title" type="text" name="title"/><br>
+                <label>Description</label>
+                <input  [(ngModel)]="newCourse.description" type="text"  name="description"/><br>
+                <label>Public Access</label>
+                <input  [(ngModel)]="newCourse.public_access" type="checkbox"  name="access"/><br>
+                <label>Date Created</label>
+                <input  [(ngModel)]="newCourse.date_created" type="date"  name="datecreation"/><br>
+                <label>Access Code</label>
+                <input  [(ngModel)]="newCourse.access_code" type="text"  name="accesscode"/><br>
+                <button (click)="addCourse()" class = "submit">Comfirm</button>
+            </form>
+        </div>
+    </div>
+</body>
