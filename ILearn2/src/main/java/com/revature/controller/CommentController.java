@@ -51,7 +51,10 @@ public class CommentController {
 	
 	@PostMapping(path = "/update", consumes = {MediaType.APPLICATION_JSON_VALUE})
 	public void updateComment(@RequestBody Comment comment) {
-		this.commentService.updateComment(comment);
+		if(comment.getAuthor()!=null) {
+			this.commentService.updateComment(comment);
+		}
+		
 	}
 	
 	@PostMapping(path = "/like")
