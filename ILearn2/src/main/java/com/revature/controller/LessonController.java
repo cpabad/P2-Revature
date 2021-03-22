@@ -18,7 +18,7 @@ import com.revature.service.LessonService;
 
 @RestController("lessonController")
 @RequestMapping(path = "/lesson")
-@CrossOrigin(origins = {"http://ilearnrevature.s3-website.us-east-2.amazonaws.com"})
+@CrossOrigin(origins = {"http://ilearnrevature.s3-website.us-east-2.amazonaws.com", "http://localhost:4200"})
 public class LessonController {
 
 	private LessonService lessonService;
