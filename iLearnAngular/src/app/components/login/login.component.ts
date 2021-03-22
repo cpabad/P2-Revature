@@ -32,8 +32,11 @@ export class LoginComponent implements OnInit {
     this.userService.authenticate(this.email,this.password).subscribe(
       data => {
         this.existedUser = data
-        this.router.navigate([''])
         this.invalidLogin= false;
+        this.router.navigate(['']).then(()=>{
+          window.location.reload();
+        }
+        )
       },
       error => {
         console.log('errrorr!')
@@ -60,6 +63,7 @@ export class LoginComponent implements OnInit {
     this.userService.login(this.email,this.password).subscribe(
       (data) =>{
         console.log(data)
+        window.location.reload();
       },
       ()=>{
         console.log('Errorrrrr!')
