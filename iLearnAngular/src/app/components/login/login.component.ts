@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
       data => {
         this.existedUser = data
         this.invalidLogin= false;
-        this.router.navigate(['']).then(()=>{
+        this.router.navigate(['home']).then(()=>{
           window.location.reload();
         }
         )
