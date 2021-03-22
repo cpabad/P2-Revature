@@ -18,7 +18,9 @@ export class CreateLessonComponent implements OnInit {
   ngOnInit(): void {
     this.getloggedInUser(this.email);
     this.lessonForm = this.formBuilder.group({
-      profile: ['']
+      profile: [''],
+      title: '',
+      courseid: 0
     })
   }
   lessons:Lesson[];
@@ -56,8 +58,8 @@ export class CreateLessonComponent implements OnInit {
   createObject(){
     this.formData.append('file', this.lessonForm.get('profile').value);
     this.lessonService.createObject(this.formData).subscribe(
-      ()=>{
-        // console.log(data);
+      (data)=>{
+        console.log(data);
         // console.log(this.newLesson);
         // this.newLesson.file_location = data;
         // console.log(this.newLesson);
