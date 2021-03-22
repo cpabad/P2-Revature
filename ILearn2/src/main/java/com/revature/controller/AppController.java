@@ -93,7 +93,11 @@ public class AppController {
 	
 	@PostMapping(path = "/updateUser",consumes = {MediaType.APPLICATION_JSON_VALUE})
 	public void updateUser(@RequestBody User user) {
-		this.userService.getUserById(user.getUserid());	
+		User updatedUser = this.userService.getUserById(user.getUserid());
+		if(updatedUser != null) {
+			this.userService.updateUser(user);
+		}
+		
 	}
 	
 	@GetMapping(path = "/enrollCourse")

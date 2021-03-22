@@ -17,7 +17,7 @@ header{
 .courseDisplay {
     padding: 10px;
     scroll-margin-bottom: 0;
-    height: 400px;
+    height: 520px;
     background-color:rgb(187, 209, 235);
     overflow-y:scroll;
     overflow-x: scroll;
