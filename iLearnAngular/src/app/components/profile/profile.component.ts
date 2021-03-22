@@ -26,7 +26,7 @@ export class ProfileComponent implements OnInit {
         (data)=>{
           console.log(data)
           alert("Successfully Updated Profile!");
-          window.location.reload();
+          
         },
         ()=>{
           console.log('Errorrrrr!')
