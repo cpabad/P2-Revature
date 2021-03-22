@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit {
   }
 
   update(){
+      console.log(this.loggedInUser)
       this.userService.updateProfile(this.loggedInUser).subscribe(
         (data)=>{
           console.log(data)
