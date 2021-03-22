@@ -19,7 +19,7 @@ import com.revature.service.CommentService;
 
 @RestController("commentController")
 @RequestMapping(path = "/comment")
-@CrossOrigin
+@CrossOrigin(origins = {"http://ilearnrevature.s3-website.us-east-2.amazonaws.com"})
 public class CommentController {
 	
 	private CommentService commentService;

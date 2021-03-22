@@ -24,7 +24,7 @@ import com.revature.service.UserService;
 
 @RestController(value = "appController")
 @RequestMapping(path = "/iLearn")
-@CrossOrigin()
+@CrossOrigin(origins = {"http://ilearnrevature.s3-website.us-east-2.amazonaws.com"})
 public class AppController {
 	
 	@Autowired

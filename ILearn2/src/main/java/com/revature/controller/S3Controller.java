@@ -22,7 +22,7 @@ import com.revature.service.S3Service;
 
 @RestController("s3controller")
 @RequestMapping(path = "/s3")
-@CrossOrigin()
+@CrossOrigin(origins = {"http://ilearnrevature.s3-website.us-east-2.amazonaws.com"})
 public class S3Controller {
 	
 	@Autowired
