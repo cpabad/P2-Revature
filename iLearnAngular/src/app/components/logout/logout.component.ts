@@ -13,7 +13,7 @@ export class LogoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.logout()
-    this.router.navigate(['login'])
+    this.router.navigate([''])
   }
 
 }

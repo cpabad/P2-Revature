@@ -15,7 +15,7 @@ import { TestComponent } from './components/test/test.component';
 
 const routes: Routes = [
   {
-    path: '',component: HomepageComponent
+    path: 'home',component: HomepageComponent
   },
 
   {
@@ -23,7 +23,7 @@ const routes: Routes = [
     component: CreateLessonComponent
   },
   {
-    path: "login",
+    path: '',
     component: LoginComponent
 
 },
